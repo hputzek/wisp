@@ -3,7 +3,7 @@ module.exports = function(grunt) {
 	// Load NPM Tasks
 	// https://github.com/shootaroo/jit-grunt
 	require('jit-grunt')(grunt, {
-		'useminPrepare' : 'grunt-usemin',
+		'useminPrepare' : 'grunt-usemin'
 	});
 
 	grunt.initConfig({
@@ -26,17 +26,20 @@ module.exports = function(grunt) {
 			}
 		},
 
-		// Compass stylesheet compilation; config is loaded from config.rb
-		compass: {
-			default:  {
-				options: {
-					config: '<%= config.app %>/scss/config.rb',
-					basePath: '<%= config.app %>/scss'
+		// sass stylesheet compilation
+		sass: {
+			options: {
+				sourceMap: true,
+				includePaths: ["<%= config.app %>/bower_components", "<%= config.app %>/bower_components/foundation/scss"]
+			},
+			dist: {
+				files: {
+					'<%= config.dist %>/css/screen.css': '<%= config.app %>/scss/screen.scss'
 				}
 			}
 		},
 
-		// set browser prefixes --> This task is not in use because it's done with the gem version while running compass task (see config.rb from compass)
+		// set browser prefixes --> This task is not in use because it's done with the gem version while running sass task (see config.rb from sass)
 		autoprefixer: {
 			build: {
 				options: {
@@ -74,7 +77,7 @@ module.exports = function(grunt) {
 		watch: {
 			scss: {
 				files: ['<%= config.app %>/scss/**/*.scss'],
-				tasks: 'compass'
+				tasks: 'sass'
 			},
 			html: {
 				files: ['<%= config.app %>/templates/**/*.hbs'],
@@ -156,9 +159,9 @@ module.exports = function(grunt) {
 	// update dev dependencies
 	grunt.registerTask('update', ['devUpdate']);
 	// default task
-	grunt.registerTask('default', ['clean','compass', 'autoprefixer', 'assemble','handlebars']);
+	grunt.registerTask('default', ['clean','sass', 'autoprefixer', 'assemble','handlebars']);
 	// build scss -> css
-	grunt.registerTask('scss', ['clean:css','compass','autoprefixer']);
+	grunt.registerTask('scss', ['clean:css','sass','autoprefixer']);
 	// build html
 	grunt.registerTask('html', ['assemble']);
 	// dev Server

@@ -4,6 +4,7 @@
 .tmp
 .sass-cache
 .cache*
+.idea
 node_modules
 
 
