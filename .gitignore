@@ -1,0 +1,16 @@
+
+
+# Ignore temporary and cache data
+.tmp
+.sass-cache
+.cache*
+node_modules
+
+
+# Exclude Dist folder
+dist
+
+
+# Exclude bower_components
+app/bower_components
+

@@ -1,0 +1,5 @@
+<ul class="small-block-grid-3 medium-block-grid-10">
+	{{#each wispcastSettings.trackData}}
+		<li data-wispcast-tracknumber="{{@index}}"><span title="{{this.title}}"><img src="{{this.artwork_url}}"/></span></li>
+	{{/each}}
+</ul>

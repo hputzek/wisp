@@ -1,0 +1,46 @@
+// Show current breakpoint in html
+@mixin showBreakpoints($yepnope){
+	@if $yepnope == true{
+		body:before {
+			background: #333;
+			opacity: 0.5;
+			display: inline-block;
+			position: fixed;
+			color: #fff;
+			padding: 5px;
+			z-index: 100;
+			left: 50px;
+			pointer-events: none;
+		}
+
+		@media #{$small-only} {
+			body:before{
+				content: 'small';
+
+			}
+		}
+		@media #{$medium-only} {
+			body:before{
+				content: 'medium';
+
+			}
+		}
+		@media #{$large-only} {
+			body:before{
+				content: 'large';
+
+			}
+		}
+		@media #{$xlarge-only} {
+			body:before{
+				content: 'xlarge';
+
+			}
+		}
+		@media #{$xxlarge-only} {
+			body:before{
+				content: 'xxlarge';
+			}
+		}
+	}
+}
