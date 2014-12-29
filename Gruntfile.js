@@ -83,6 +83,10 @@ module.exports = function(grunt) {
 				files: ['<%= config.app %>/templates/**/*.hbs'],
 				tasks: 'html'
 			},
+			handlebars: {
+				files: ['<%= config.app %>/js/templates/**/*.hbs'],
+				tasks: 'handlebars'
+			},
 			livereload: {
 				options: {
 					livereload: true

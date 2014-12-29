@@ -35,8 +35,8 @@ WISP.wispcast = (function () {
 	 * initialize method
 	 */
 	function initialize() {
-		//createIframe($('.wispcast-player'));
-		//initPlayerWidget();
+		createIframe($('.wispcast-player'));
+		initPlayerWidget();
 	}
 
 	function createIframe($elementToAppend){
@@ -52,7 +52,6 @@ WISP.wispcast = (function () {
 	}
 
 	function onReady(){
-		var allTracks = null;
 		widget.getSounds(function (allTracks) {
 			config.trackData = addArtworkUrls(allTracks);
 			renderTrackGrid();
@@ -76,6 +75,7 @@ WISP.wispcast = (function () {
 			var html = WISP.Templates["soundcloud/wispcast-grid"];
 			// Render the grid into the page
 			config.$trackGridElement.append(html(templateData));
+			console.log(templateData);
 			$('body').on('click','[data-wispcast-tracknumber]',function(){
 				var tracknumber= $(this).data('wispcast-tracknumber');
 				widget.skip(tracknumber);
