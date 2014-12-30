@@ -26,6 +26,7 @@ WISP.wispcast = (function () {
 		'$playerIframeElement' : $('<iframe></iframe>'),
 		'playerId': 'soundcloud-widget',
 		'$trackGridElement': $('.wispcast-grid'),
+		'$widgetElement': $('.wispcast-widget'),
 		'trackData': null
 	};
 
@@ -35,14 +36,19 @@ WISP.wispcast = (function () {
 	 * initialize method
 	 */
 	function initialize() {
-		createIframe($('.wispcast-player'));
-		initPlayerWidget();
+		if (Foundation.utils.is_medium_up()){
+			createIframe($('.wispcast-player'), 160);
+			initPlayerWidget();
+		}
+		else {
+			createIframe($('.wispcast-player'), 480);
+		}
 	}
 
-	function createIframe($elementToAppend){
+	function createIframe($elementToAppend, height){
 		config.$playerIframeElement.attr('id',config.playerId);
 		config.$playerIframeElement.attr('src','https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/27841327&amp;auto_play=false&amp;hide_related=false&amp;visual=false');
-		config.$playerIframeElement.css('height','130px');
+		config.$playerIframeElement.css({'height':height,'width':'100%','border':'none'});
 		$elementToAppend.append(config.$playerIframeElement);
 	}
 
@@ -75,10 +81,18 @@ WISP.wispcast = (function () {
 			var html = WISP.Templates["soundcloud/wispcast-grid"];
 			// Render the grid into the page
 			config.$trackGridElement.append(html(templateData));
+			$(document).foundation();
 			console.log(templateData);
 			$('body').on('click','[data-wispcast-tracknumber]',function(){
 				var tracknumber= $(this).data('wispcast-tracknumber');
+				var templateDataTrackinfo = templateData.wispcastSettings.trackData[tracknumber];
+				var widgetHtml = WISP.Templates["soundcloud/wispcast-trackinfo"];
+				setTimeout(function(){
+					config.$widgetElement.removeClass('animated fadeIn');
+				}, 130);
+				config.$widgetElement.html(widgetHtml(templateDataTrackinfo)).addClass('animated fadeIn');
 				widget.skip(tracknumber);
+				WISP.initPlugins.scrollToAnchor('#wispcast-player');
 			})
 		}
 	}

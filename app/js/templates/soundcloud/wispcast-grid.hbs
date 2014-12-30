@@ -1,11 +1,11 @@
 <ul class="small-block-grid-3 medium-block-grid-7 large-block-grid-10">
 	{{#each wispcastSettings.trackData}}
 		<li title="{{this.title}}">
+			<div class="wow bounceIn" data-wow-delay="1.{{@index}}s" data-wow-duration="1.{{@index}}s">
+			<span style="display:inline-block" data-tooltip data-wispcast-tracknumber="{{@index}}" aria-haspopup="true" data-options="show_on:large" title="{{this.title}}">
 				<img src="{{this.artwork_url}}"/>
-               <!-- <div data-wispcast-tracknumber="{{@index}}">
-                    <span title="{{this.title}}">{{this.title}}</span>
-					<p>{{this.description}}</p>
-                </div>-->
+			</span>
+			</div>
 		</li>
 	{{/each}}
 </ul>

@@ -8,45 +8,55 @@
  */
 
 if (typeof WISP === 'undefined') {
-    WISP = jQuery.extend({},{});
+	WISP = jQuery.extend({},{});
 }
 
+var wow;
+
 WISP.initPlugins = (function () {
-    'use strict';
-    var wall = null;
-    /**
-     * initialize method
-     */
-    function initialize() {
-        wall = new freewall(".wispcast-grid");
-        wall.reset({
-            selector: 'li',
-            animate: true,
-            cellW: 'auto',
-            cellH: 'auto',
-            onResize: function() {
-                wall.fitWidth();
-            }
-        });
+	'use strict';
+	initWow();
+	/**
+	 * initialize method
+	 */
+	function initialize() {
 
-        var images = wall.container.find('img');
-        images.find('img').load(function() {
-            //wall.fitWidth();
-        });
-    }
+	}
 
-    function updateWall() {
-        wall.fitWidth();
-    }
+	function initWow() {
+		wow = new WOW(
+			{
+				boxClass:     'wow',      // default
+				animateClass: 'animated', // default
+				offset:       0,          // default
+				mobile:       true,       // default
+				live:         true        // default
+			}
+		);
+		wow.init();
+	}
 
-    // expose public functions
-    return {
-        initialize: initialize,
-        updateWall: updateWall
-    };
+	function setAnchorLinks () {
+		$('a[href*=#]').on('click', function(event){
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
+			window.location.hash = this.hash;
+		});
+	}
+
+	function scrollToAnchor(hash) {
+		$('html,body').animate({scrollTop:$($(hash)).offset().top}, 500);
+		window.location.hash = hash;
+	}
+
+	// expose public functions
+	return {
+		initialize: initialize,
+		scrollToAnchor: scrollToAnchor
+	};
 }) ();
 
 // Register Bootstrap
 if (typeof WISP.Bootstrap !== 'undefined') {
-    WISP.Bootstrap.registerBootstrap(WISP.initPlugins);
+	WISP.Bootstrap.registerBootstrap(WISP.initPlugins);
 }
