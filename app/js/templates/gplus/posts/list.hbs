@@ -1,0 +1,50 @@
+<dl class="accordion custom-accordion wow fadeInLeft" style="display: hidden" data-wow-duration="3s" data-accordion>
+	{{#each items}}
+		<dd class="accordion-navigation">
+			<a href="#panel-{{@index}}" class="js-no-anchor-scroll">{{{trimS this.object.attachments.0.displayName 0 80}}}
+			</a>
+			<div id="panel-{{@index}}" class="content">
+				<div class="gplus-news-body clearfix">
+					<p class="gplus-news-object-content">{{{this.object.content}}}</p>
+
+					{{#if object.attachments}} {{! if object has attachments }}
+						{{#each object.attachments}}
+							{{#compare this.objectType "video"}} {{! if attachment is a video }}
+								<h5><i class="fa fa-youtube-play"></i> <a href="{{this.url}}" title="{{this.content}}">{{this.displayName}}</a>
+								</h5>
+								<iframe src="{{this.embed.url}}"></iframe>
+								<div class="panel white" data-js-link-url="{{this.url}}">
+									<p>{{{this.content}}}</p>
+								</div>
+							{{/compare}}
+							{{#compare this.objectType "article"}} {{! if attachment is an article/link }}
+								<div class="panel tertiary-150 clearfix" data-js-link-url="{{this.url}}">
+									<a href="{{this.url}}">
+										<img class="gplus-news-image left" src="{{this.image.url}}"/>
+									</a>
+									<h5>{{this.displayName}}</h5>
+
+									<p>{{this.content}}</p>
+								</div>
+							{{/compare}}
+							{{#compare this.objectType "photo"}} {{! if attachment is a photo }}
+
+								<a href="{{this.fullImage.url}}">
+									<div style="background-color:#fff;"><img src="{{this.image.url}}" alt="{{this.displayName}}"/></div>
+								</a>
+							{{/compare}}
+							{{#compare this.objectType "event"}} {{! if attachment is an event }}
+
+								<div class="panel tertiary-150" data-js-link-url="{{this.url}}">
+									<h5><i class="fa fa-calendar-o"></i> {{this.displayName}}</h5>
+
+									<p>{{this.content}}</p>
+								</div>
+							{{/compare}}
+						{{/each}}
+					{{/if}}
+				</div>
+			</div>
+		</dd>
+	{{/each}}
+</dl>

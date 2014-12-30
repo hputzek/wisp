@@ -1,0 +1,62 @@
+$accordion-header-colors: #359bba,#cfcd5f,#c7295e,#3eb761,#359bba;
+$accordion-header-colors-length: length($accordion-header-colors);
+
+.custom-accordion {
+	position: relative;
+	.accordion-navigation {
+		text-align: left;
+		float: none !important;
+		padding: 0;
+		>a {
+			transition: 0.2s all;
+			display: block;
+			padding: rem-calc(20);
+		}
+		&.active {
+			> a {
+				font-size: 120%;
+				padding: rem-calc(20);
+				display: block;
+			}
+		}
+	}
+	dd > .content {
+		display: block;
+		height: 0;
+		overflow: hidden;
+		margin: 0;
+		padding: 0;
+		transition: 0.2s all;
+		transform: scale(0.1);
+		transform-origin:0 0;
+
+		&.active  {
+			transform: scale(1);
+			height: auto;
+			padding: rem-calc(20);
+		}
+	}
+
+
+	@while $accordion-header-colors-length > 0 {
+		.accordion-navigation:nth-child(#{$accordion-header-colors-length}) > a:hover,
+		.accordion-navigation.active:nth-child(#{$accordion-header-colors-length}) > a{
+			background-color: nth($accordion-header-colors,$accordion-header-colors-length);
+		}
+		$accordion-header-colors-length: $accordion-header-colors-length - 1;
+	}
+}
+
+@media #{$medium-up} {
+	.custom-accordion {
+		.accordion-navigation {
+			>a {
+				display: inline-block;
+				opacity: 0.9;
+				padding: rem-calc(5) rem-calc(10);
+			}
+		}
+	}
+}
+
+

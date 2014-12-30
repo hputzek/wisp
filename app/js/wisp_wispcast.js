@@ -92,7 +92,7 @@ WISP.wispcast = (function () {
 				}, 130);
 				config.$widgetElement.html(widgetHtml(templateDataTrackinfo)).addClass('animated fadeIn');
 				widget.skip(tracknumber);
-				WISP.initPlugins.scrollToAnchor('#wispcast-player');
+				WISP.tools.scrollToAnchor('#wispcast-player');
 			})
 		}
 	}

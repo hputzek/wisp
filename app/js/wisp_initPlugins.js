@@ -44,15 +44,9 @@ WISP.initPlugins = (function () {
 		});
 	}
 
-	function scrollToAnchor(hash) {
-		$('html,body').animate({scrollTop:$($(hash)).offset().top}, 500);
-		window.location.hash = hash;
-	}
-
 	// expose public functions
 	return {
-		initialize: initialize,
-		scrollToAnchor: scrollToAnchor
+		initialize: initialize
 	};
 }) ();
 

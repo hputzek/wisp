@@ -9,7 +9,14 @@ if (typeof WISP === 'undefined') {
 	WISP = jQuery.extend({},{});
 }
 
-$('document').foundation();
+$(document).foundation({
+	accordion: {
+		callback : function (accordion) {
+			console.log(accordion.prev('a'));
+			WISP.tools.scrollToAnchor(accordion.prev('a'));
+		}
+	}
+});
 
 $(document)
 	.on('open.fndtn.offcanvas', '[data-offcanvas]', function() {
