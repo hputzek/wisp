@@ -96,3 +96,9 @@ meta.custom-mq-small-only {
 	font-family: "/only screen and (min-width: #{lower-bound($small-range)}) and (max-width: #{upper-bound($small-range)})/";
 	width: 40em;
 }
+
+// Text selection color
+::selection {
+	background: lighten(red ,20%);
+}
+

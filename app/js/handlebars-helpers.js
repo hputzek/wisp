@@ -4,6 +4,15 @@
  * */
 
 
+String.prototype.format = function(args, index) {
+	return this.replace(/{(\w+)}/g, function(match, number) {
+		return typeof args[index[number]] != 'undefined'
+			? args[index[number]]
+			: match
+			;
+	});
+};
+
 // http://stackoverflow.com/questions/10138518/handlebars-substring
 Handlebars.registerHelper('trimS', function(passedString, start, length ){
 	if(passedString != undefined){
@@ -54,7 +63,7 @@ Handlebars.registerHelper('compare', function(lvalue, rvalue, options) {
 
 });
 
-
+// example: {{{formatDate 'published' '<i class="fa fa-calendar-o"></i> {dd}.{MM}.{yyyy} <i class="fa fa-clock-o"></i> {hh}:{mm}'}}}
 
 Handlebars.registerHelper('formatDate',function(input, pattern){
 	var iso = /^(\d{4})(?:-?W(\d+)(?:-?(\d+)D?)?|(?:-(\d+))?-(\d+))(?:[T ](\d+):(\d+)(?::(\d+)(?:\.(\d+))?)?)?(?:Z(-?\d*))?$/;
