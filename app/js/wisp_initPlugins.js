@@ -67,3 +67,17 @@ WISP.initPlugins = (function () {
 if (typeof WISP.Bootstrap !== 'undefined') {
 	WISP.Bootstrap.registerBootstrap(WISP.initPlugins);
 }
+
+$(document).foundation({
+	accordion: {
+		callback : function (accordion) {
+			console.log(accordion.prev('a'));
+			WISP.tools.scrollToAnchor(accordion.prev('a'));
+		}
+	},
+	tab: {
+		callback : function (tab) {
+			WISP.initPlugins.renderMemberFlipcard($(tab).find('a').attr('href'));
+		}
+	}
+});

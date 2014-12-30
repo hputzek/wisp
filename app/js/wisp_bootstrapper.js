@@ -9,32 +9,6 @@ if (typeof WISP === 'undefined') {
 	WISP = jQuery.extend({},{});
 }
 
-$(document).foundation({
-	accordion: {
-		callback : function (accordion) {
-			console.log(accordion.prev('a'));
-			WISP.tools.scrollToAnchor(accordion.prev('a'));
-		}
-	},
-	tab: {
-		callback : function (tab) {
-			WISP.initPlugins.renderMemberFlipcard($(tab).find('a').attr('href'));
-		}
-	}
-});
-
-$(document)
-	.on('open.fndtn.offcanvas', '[data-offcanvas]', function() {
-		$('.off-canvas-list').css({
-			position: "relative",
-			top: $('body').scrollTop()
-		});
-		$('html').css('overflow', 'hidden');
-	})
-	.on('close.fndtn.offcanvas', '[data-offcanvas]', function() {
-		$('html').css('overflow', 'auto');
-	});
-
 WISP.Bootstrap = (function () {
 	// use strict mode
 	'use strict';
