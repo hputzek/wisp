@@ -78,7 +78,7 @@ module.exports = function(grunt) {
 		watch: {
 			scss: {
 				files: ['<%= config.app %>/scss/**/*.scss'],
-				tasks: 'sass'
+				tasks: 'scss'
 			},
 			html: {
 				files: ['<%= config.app %>/templates/**/*.hbs'],
@@ -168,9 +168,9 @@ module.exports = function(grunt) {
 	// update dev dependencies
 	grunt.registerTask('update', ['devUpdate']);
 	// default task
-	grunt.registerTask('default', ['clean','sass', 'autoprefixer', 'assemble','handlebars']);
+	grunt.registerTask('default', ['clean', 'copyDist','sass', 'autoprefixer', 'assemble','handlebars']);
 	// build scss -> css
-	grunt.registerTask('scss', ['clean:css','sass','autoprefixer']);
+	grunt.registerTask('scss', ['sass','autoprefixer']);
 	// build html
 	grunt.registerTask('html', ['assemble']);
 	// dev Server

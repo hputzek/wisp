@@ -66,7 +66,7 @@
                     transition: "all 0.5s ease-out"
                 });
 
-                $dom.find(".front").wrap("<div class='front-wrap'></div>");
+                $dom.find(".front").wrap("<div class='front-wrap' style='z-index:2;'></div>");
                 $dom.find(".back").wrap("<div class='back-wrap'></div>");
 
                 $dom.find(".front, .back, .front-wrap, .back-wrap").outerHeight(height);
@@ -82,7 +82,8 @@
                 });
 
                 if (settings.trigger.toLowerCase() == "click") {
-                    $dom.click(function() {
+                    $dom.find('.trigger-flip').click(function(e) {
+                        e.preventDefault();
                         if ($dom.data("flipped")) {
                             unflip($dom);
                         } else {

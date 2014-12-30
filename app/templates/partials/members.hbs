@@ -1,54 +1,82 @@
-<div class="row">
-	<div class="small-12 columns">
-		<dl class="tabs vertical" data-tab data-options="deep_linking:true">
-			{{#each members}}
-				<dd class="active"><a href="#wisp-crew-{{firstName}}-{{lastName}}">{{firstName}} {{lastName}}</a></dd>
-			{{/each}}
-		</dl>
-		<div class="tabs-content vertical">
-			{{#each members}}
-				<div class="content" id="wisp-crew-{{firstName}}-{{lastName}}">
-					<div class="member-flip no-init">
-						<div class="front">
-							<div class="wisp-member">
-								<section class="about">
-									<h4>{{firstName}}{{lastName}}<br/><small>{{status}}</small></h4>
-									{{#markdown}}{{description}}{{/markdown}}
-								</section>
-								<section class="connect">
-									<div class="connect-box">
-										<ul class="connect-icons">
-											{{#if homepage}}
+<section class="members">
+	<div class="row">
+		<div class="small-12 columns">
+			<dl class="tabs vertical" data-tab data-options="deep_linking:true">
+				{{#each members}}
+					<dd class="active"><a href="#wisp-crew-{{firstName}}-{{lastName}}">{{firstName}} {{lastName}}</a></dd>
+				{{/each}}
+			</dl>
+			<div class="tabs-content vertical">
+				{{#each members}}
+					<div class="content" id="wisp-crew-{{firstName}}-{{lastName}}">
+						<div class="member-flip no-init">
+							<div class="front">
+								<div class="wisp-member">
+									<section class="about">
+										<h4>{{firstName}}{{lastName}}<br/><small>{{status}}</small></h4>
+										{{#markdown}}{{description}}{{/markdown}}
+									</section>
+									<section class="connect">
+										<div class="connect-box">
+											<ul class="connect-icons">
+												{{#if homepage}}
+													<li>
+												<span data-tooltip aria-haspopup="true" data-options="show_on:large" title="{{homepage}}">
+													<a href="{{homepage}}" class="homepage"><i class="fa fa-globe"></i></a><span class="text-homepage">WWW</span>
+												</span>
+													</li>
+												{{/if}}
+												{{#if twitter}}
+													<li><a href="{{twitter}}" class="twitter" target="_blank"><i class="fa fa-twitter"></i></a><span class="text-twitter">Twitter</span></li>
+												{{/if}}
+
 												<li>
-											<span data-tooltip aria-haspopup="true" data-options="show_on:large" title="{{homepage}}">
-												<a href="{{homepage}}" class="homepage"><i class="fa fa-globe"></i></a><span class="text-homepage">WWW</span>
-											</span>
+													<span data-tooltip aria-haspopup="true" data-options="show_on:large" title="Open contact form">
+														<a  href="#" class="mail trigger-flip"><i class="fa fa-2x fa-envelope"></i></a><span class="text-mail">E-Mail</span>
+													</span>
 												</li>
-											{{/if}}
-											{{#if twitter}}
-												<li><a href="{{twitter}}" class="twitter" target="_blank"><i class="fa fa-twitter"></i></a><span class="text-twitter">Twitter</span></li>
-											{{/if}}
-											<li><a href="#" class="mail"><i class="fa fa-envelope"></i></a><span class="text-mail">Email</span></li>
-											{{#if skype}}
-												<li><a href="{{skype}}" class="skype"><i class="fa fa-skype"></i></a><span class="text-skype">Skype</span></li>
-											{{/if}}
-											{{#if facebook}}
-												<li><a href="{{facebook}}" class="facebook"><i class="fa fa-facebook"></i></a><span class="text-facebook">Facebook</span></li>
-											{{/if}}
-											{{#if soundcloud}}
-												<li><a href="{{soundcloud}}" class="soundcloud"><i class="fa fa-soundcloud"></i></a><span class="text-soundcloud">Soundcloud</span></li>
-											{{/if}}
-										</ul>
-									</div>
-								</section>
+												{{#if skype}}
+													<li><a href="{{skype}}" class="skype"><i class="fa fa-skype"></i></a><span class="text-skype">Skype</span></li>
+												{{/if}}
+												{{#if facebook}}
+													<li><a href="{{facebook}}" class="facebook"><i class="fa fa-facebook"></i></a><span class="text-facebook">Facebook</span></li>
+												{{/if}}
+												{{#if soundcloud}}
+													<li><a href="{{soundcloud}}" class="soundcloud"><i class="fa fa-soundcloud"></i></a><span class="text-soundcloud">Soundcloud</span></li>
+												{{/if}}
+											</ul>
+										</div>
+									</section>
+								</div>
+							</div>
+							<div class="back panel">
+								<span class="clearfix"><button class="button secondary right tiny trigger-flip"><i class="fa fa-2x fa-close"></i></button></span>
+                                <form data-abide>
+									<h3>your Message to {{firstName}}</h3>
+                                    <div class="name-field">
+                                        <label>Your name <small>required</small>
+                                            <input type="text" required pattern="[a-zA-Z]+">
+                                        </label>
+                                        <small class="error">Please tell {{firstName}} your Name :-)</small>
+                                    </div>
+                                    <div class="email-field">
+                                        <label>Email <small>required</small>
+                                            <input type="email" required>
+                                        </label>
+                                        <small class="error">An email address is required.</small>
+                                    </div>
+                                    <div class="message-field">
+                                        <label>Textarea Label
+                                            <textarea rows="10" placeholder="Your message to {{firstName}}"></textarea>
+                                        </label>
+                                    </div>
+                                    <button type="submit">Submit</button>
+                                </form>
 							</div>
 						</div>
-						<div class="back">
-							<p>Back content</p>
-						</div>
 					</div>
-				</div>
-			{{/each}}
+				{{/each}}
+			</div>
 		</div>
 	</div>
-</div>
+</section>

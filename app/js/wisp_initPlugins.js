@@ -31,7 +31,6 @@ WISP.initPlugins = (function () {
 	}
 
 	function renderMemberFlipcard(parentElement) {
-		console.log(parentElement);
 		$(parentElement).find('.member-flip.no-init').flip().removeClass('no-init');
 	}
 
