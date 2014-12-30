@@ -20,7 +20,19 @@ WISP.initPlugins = (function () {
 	 * initialize method
 	 */
 	function initialize() {
+		initMembers();
+	}
 
+	function initMembers() {
+		$(".connect-icons a").hover(function(){
+			$(".connect-box").toggleClass("color-"+ this.className );
+			$(".text-"+ this.className).toggleClass("show");
+		});
+	}
+
+	function renderMemberFlipcard(parentElement) {
+		console.log(parentElement);
+		$(parentElement).find('.member-flip.no-init').flip().removeClass('no-init');
 	}
 
 	function initWow() {
@@ -46,7 +58,8 @@ WISP.initPlugins = (function () {
 
 	// expose public functions
 	return {
-		initialize: initialize
+		initialize: initialize,
+		renderMemberFlipcard: renderMemberFlipcard
 	};
 }) ();
 

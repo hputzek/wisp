@@ -15,6 +15,11 @@ $(document).foundation({
 			console.log(accordion.prev('a'));
 			WISP.tools.scrollToAnchor(accordion.prev('a'));
 		}
+	},
+	tab: {
+		callback : function (tab) {
+			WISP.initPlugins.renderMemberFlipcard($(tab).find('a').attr('href'));
+		}
 	}
 });
 

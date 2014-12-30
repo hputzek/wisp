@@ -62,7 +62,8 @@ module.exports = function(grunt) {
 				jsDir: './../app/js',
 				assets: '<%= config.dist %>',
 				bower_components: './../app/bower_components',
-				partials: ['<%= config.app %>/templates/partials/{,*/}*.hbs']
+				partials: ['<%= config.app %>/templates/partials/{,*/}*.hbs'],
+				data: ['<%= config.app %>/templates/data/**/*.json','<%= config.app %>/templates/data/**/*.yml']
 			},
 			site: {
 				options: {
@@ -86,6 +87,10 @@ module.exports = function(grunt) {
 			handlebars: {
 				files: ['<%= config.app %>/js/templates/**/*.hbs'],
 				tasks: 'handlebars'
+			},
+			data: {
+				files: ['<%= config.app %>/js/templates/data/**/*.json','<%= config.app %>/templates/data/**/*.yml'],
+				tasks: 'html'
 			},
 			livereload: {
 				options: {

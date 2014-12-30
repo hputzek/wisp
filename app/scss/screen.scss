@@ -32,7 +32,7 @@
 //@import "foundation/components/magellan";
 //@import "foundation/components/orbit";
 //@import "foundation/components/pagination";
-//@import "foundation/components/panels";
+@import "foundation/components/panels";
 //@import "foundation/components/pricing-tables";
 //@import "foundation/components/progress-bars";
 //@import "foundation/components/range-slider";
@@ -42,7 +42,7 @@
 //@import "foundation/components/sub-nav";
 //@import "foundation/components/switches";
 @import "foundation/components/tables";
-//@import "foundation/components/tabs";
+@import "foundation/components/tabs";
 //@import "foundation/components/thumbs";
 @import "foundation/components/tooltips";
 @import "foundation/components/top-bar";
@@ -74,8 +74,9 @@ $fa-font-path: "../fonts/font-awesome/";
 
 // this mixin can show the current breakpoint in frontend
 @import "components/show-breakpoints";
-@import "components/accordion";
 
+@import "components/accordion";
+@import "components/members";
 
 
 // this mixin can show the current breakpoint in frontend

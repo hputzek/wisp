@@ -1,0 +1,33 @@
+imagePath: /img/
+members:
+  paul_schengber:
+    firstName : Paul
+    lastName : Schengber
+    status: Producer
+    homepage: http://blog.putzek.com
+    facebook: http://www.facebook.de
+    twitter: http://twitter.com
+    skype:
+    soundcloud: http://www.soundcloud.com
+    description: |
+
+    showImage: true
+
+  hendrik_putzek:
+    firstName : Hendrik
+    lastName : Putzek
+    status: Producer
+    description: |
+
+
+    showImage: true
+
+  max_mustermann:
+    firstName : Max
+    lastName : Mustermann
+    status: Producer / Chief Assistant
+    description: |
+                  Ich bin Max Mustermann Lorem Ipsum
+
+
+    showImage: true
