@@ -6,9 +6,12 @@ pagetitle: Startseite
     <div id="midground"></div>
     <div id="foreground"></div>
 </div>
-<!-- content goes here -->
+<!-- content start -->
+
+<!-- main Menu -->
 {{> mainMenu}}
-<section class="wow fadeInDown" style="background:none;">
+<!-- main Menu end -->
+<section id="start" class="wow fadeInDown" style="background:none; padding-top:120px; margin-bottom:0">
 
 	<div class="row">
 		<div class="small-12 columns" >
@@ -21,36 +24,55 @@ pagetitle: Startseite
     <!--Google Plus end-->
 </section>
 
+<!--about-->
+<section id="about" class="wow fadeInDown">
+    <div class="row">
+        <div class="small-12 columns" >
+			{{> aboutUs}}
+        </div>
+    </div>
+</section>
+<!--about end-->
 
 <!--Member Section-->
-{{> members}}
+<section id="members" class="wow fadeInUp" style="position: relative;z-index:3;">
+	{{> members}}
+</section>
 <!--Member Section end-->
 
 <!--wispcast-->
-<section class="wow fadeInUp" id="wispcast">
-	<div class="row">
-		<div class="large-10 large-centered columns">
-			<h2>Wispcast</h2>
-		</div>
-	</div>
-	<div class="row">
-		<div class="small-12 columns">
-			<div class="wow fadeInUp" data-wow-delay=".5s">
-				<div id="wispcast-player" class="wispcast-player"></div>
-			</div>
-			<div class="wispcast-widget"></div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="small-12 columns">
-			<div class="wispcast-grid">
+<section id="wispcast" class="wow fadeInUp">
+	{{> wispcast}}
+</section>
+<!--wispcast end-->
 
-			</div>
+<section id="contact">
+	<div class="row">
+		<div class="small-12 medium-8 columns">
+            <h2>Contact</h2>
+            <form id="contactMain" data-abide="ajax" action="http://www.wisp-kollektiv.de/backend/contact.php" method="post">
+                <div class="name-field">
+                    <label>Your name <small>required</small>
+                        <input type="text" name="name" required pattern="[a-zA-Z]+">
+                    </label>
+                    <small class="error">Please tell us your Name :-)</small>
+                </div>
+                <div class="email-field">
+                    <label>Email <small>required</small>
+                        <input type="email" name="email" required>
+                    </label>
+                    <small class="error">An email address is required.</small>
+                </div>
+                <div class="message-field">
+                    <label>Textarea Label
+                        <textarea rows="10" name="message" placeholder="Your message to us"></textarea>
+                    </label>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
 		</div>
 	</div>
 </section>
-
-
 
 
 <!--Footer-->

@@ -19,8 +19,47 @@ WISP.initPlugins = (function () {
 	 * initialize method
 	 */
 	function initialize() {
+		$('#contactMain').on('valid.fndtn.abide', function() {
+			var url = "http://www.wisp-kollektiv.de/backend/contact.php"; // the script where you handle the form input.
+
+			$.ajax({
+				type: "POST",
+				url: url,
+				data: $("#idForm").serialize(), // serializes the form's elements.
+				success: function(data)
+				{
+					alert(data); // show response from the php script.
+				},
+				error: function(data) {
+					console.log('error');
+				}
+			});
+			return false; // avoid to execute the actual submit of the form
+		});
 		initMembers();
 		initWow();
+		initMainMenu();
+	}
+
+	function initMainMenu() {
+		$('#topbar').scrollupbar();
+		$('#topbar').onePageNav({
+			currentClass: 'active',
+			changeHash: true,
+			scrollSpeed: 750,
+			scrollThreshold: 0.5,
+			filter: '',
+			easing: 'swing',
+			begin: function() {
+				//I get fired when the animation is starting
+			},
+			end: function() {
+				//I get fired when the animation is ending
+			},
+			scrollChange: function($currentListItem) {
+				//I get fired when you enter a section and I pass the list item of the section
+			}
+		});
 	}
 
 	function initMembers() {

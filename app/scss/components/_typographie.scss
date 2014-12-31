@@ -1,0 +1,9 @@
+@media #{$medium-up} {
+  @each $column in 2,3,4 {
+    .column-#{$column} {
+      column-count: #{$column};
+      column-gap: rem-calc(30);
+      text-align: justify;
+    }
+  }
+}

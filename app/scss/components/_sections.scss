@@ -19,7 +19,7 @@ body {
 @media #{$large-up} {
   body {
     > section {
-      margin-bottom: rem-calc(200);
+      margin-bottom: rem-calc(300);
       padding: rem-calc(40) 0;
     }
   }
@@ -37,6 +37,44 @@ body {
   }
 }
 
+@media #{$medium-up} {
+  #background {
+    background: black url(../img/bg/stars/background.png) repeat 5% 5%;
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 100;
+
+    animation-name: STAR-MOVE;
+    animation-duration: 800s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  #midground {
+    background: url(../img/bg/stars/midground.png) repeat 20% 20%;
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 200;
+
+    animation-name: STAR-MOVE;
+    animation-duration: 500s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  #foreground {
+    background: url(../img/bg/stars/foreground.png) repeat 35% 35%;
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 300;
+
+    animation-name: STAR-MOVE;
+    animation-duration: 300s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+}
+
 .background-wrap {
   position: fixed;
   z-index:-1;
@@ -44,38 +82,3 @@ body {
   height: 100%;
 }
 
-#background {
-  background: black url(../img/bg/stars/background) repeat 5% 5%;
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  z-index: 100;
-
-  animation-name: STAR-MOVE;
-  animation-duration: 800s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-}
-
-#midground {
-  background: url(../img/bg/stars/midground.png) repeat 20% 20%;
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  z-index: 200;
-
-  animation-name: STAR-MOVE;
-  animation-duration: 500s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-}
-
-#foreground {
-  background: url(../img/bg/stars/foreground.png) repeat 35% 35%;
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  z-index: 300;
-
-  animation-name: STAR-MOVE;
-  animation-duration: 300s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-}
