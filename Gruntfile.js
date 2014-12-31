@@ -77,20 +77,24 @@ module.exports = function(grunt) {
 		// watch Task: watches for file changes and triggers necessary tasks
 		watch: {
 			scss: {
-				files: ['<%= config.app %>/scss/**/*.scss'],
+				files: ['<%= config.app %>/scss/{,*/}*.scss'],
 				tasks: 'scss'
 			},
 			html: {
-				files: ['<%= config.app %>/templates/**/*.hbs'],
+				files: ['<%= config.app %>/templates{,*/}*.hbs'],
 				tasks: 'html'
 			},
 			handlebars: {
-				files: ['<%= config.app %>/js/templates/**/*.hbs'],
+				files: ['<%= config.app %>/js/templates/{,*/}*.hbs'],
 				tasks: 'handlebars'
 			},
 			data: {
 				files: ['<%= config.app %>/js/templates/data/**/*.json','<%= config.app %>/templates/data/**/*.yml'],
 				tasks: 'html'
+			},
+			images: {
+				files: ['<%= config.app %>/img/**/*.*'],
+				tasks: 'copyDist'
 			},
 			livereload: {
 				options: {

@@ -1,39 +1,33 @@
 ---
 pagetitle: Startseite
 ---
-
+<div class="background-wrap">
+    <div id="background"></div>
+    <div id="midground"></div>
+    <div id="foreground"></div>
+</div>
 <!-- content goes here -->
+{{> mainMenu}}
+<section class="wow fadeInDown" style="background:none;">
 
-<!-- Teaser top -->
-<div class="top-teaser">
 	<div class="row">
-		<div class="medium-4 small-centered columns">
-			<p class="text-center"><a href="#members" class="">experience different</br>perspectives of</br>electronic</br>
-				music.</a></p>
+		<div class="small-12 columns" >
+			<img src="img/wisp-logo.png">
 		</div>
 	</div>
-</div>
-<!-- Teaser top end -->
 
-<!--Google Plus News-->
-<div class="gplus"></div>
-<!--Google Plus end-->
+    <!--Google Plus News-->
+    <div class="gplus"></div>
+    <!--Google Plus end-->
+</section>
+
 
 <!--Member Section-->
-<div class="row">
-	<div class="small-12 columns">
-		<h3>Members</h3>
-	</div>
-</div>
 {{> members}}
 <!--Member Section end-->
-<div class="row">
-	<div class="small-12 columns">
 
-	</div>
-</div>
 <!--wispcast-->
-<section id="wispcast">
+<section class="wow fadeInUp" id="wispcast">
 	<div class="row">
 		<div class="large-10 large-centered columns">
 			<h2>Wispcast</h2>

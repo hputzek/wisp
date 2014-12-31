@@ -1,9 +1,14 @@
-<section class="members">
+<section class="wow fadeInUp" data-wow-delay="2s" style="position: relative;z-index:3;">
+    <div class="row">
+        <div class="small-12 columns">
+            <h3>Members</h3>
+        </div>
+    </div>
 	<div class="row">
 		<div class="small-12 columns">
 			<dl class="tabs vertical" data-tab data-options="deep_linking:true">
 				{{#each members}}
-					<dd class="active"><a href="#wisp-crew-{{firstName}}-{{lastName}}">{{firstName}} {{lastName}}</a></dd>
+					<dd><a href="#wisp-crew-{{firstName}}-{{lastName}}">{{firstName}} {{lastName}}</a></dd>
 				{{/each}}
 			</dl>
 			<div class="tabs-content vertical">

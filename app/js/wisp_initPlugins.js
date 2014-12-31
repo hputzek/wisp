@@ -15,12 +15,12 @@ var wow;
 
 WISP.initPlugins = (function () {
 	'use strict';
-	initWow();
 	/**
 	 * initialize method
 	 */
 	function initialize() {
 		initMembers();
+		initWow();
 	}
 
 	function initMembers() {
