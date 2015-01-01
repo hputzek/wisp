@@ -43,12 +43,13 @@
 											{{#if twitter}}
 												<li><a href="{{twitter}}" class="twitter" target="_blank"><i class="fa fa-twitter"></i></a><span class="text-twitter">Twitter</span></li>
 											{{/if}}
-
-											<li>
-												<span data-tooltip aria-haspopup="true" data-options="show_on:large" title="Open contact form">
-													<a  href="#" class="mail trigger-flip"><i class="fa fa-2x fa-envelope"></i></a><span class="text-mail">E-Mail</span>
-												</span>
-											</li>
+											{{#if email}}
+												<li>
+													<span data-tooltip aria-haspopup="true" data-options="show_on:large" title="Open contact form">
+														<a  href="#" class="mail trigger-flip"><i class="fa fa-2x fa-envelope"></i></a><span class="text-mail">E-Mail</span>
+													</span>
+												</li>
+											{{/if}}
 											{{#if skype}}
 												<li><a href="{{skype}}" class="skype"><i class="fa fa-skype"></i></a><span class="text-skype">Skype</span></li>
 											{{/if}}
@@ -65,23 +66,24 @@
 						</div>
 						<div class="back panel">
 							<span class="clearfix"><button class="button secondary right tiny trigger-flip"><i class="fa fa-2x fa-close"></i></button></span>
-							<form data-abide>
+                            <form class="contact-form" data-abide="ajax" action="{{mailformAdress}}" method="post">
+                                <input type="hidden" name="id" value="{{id}}"/>
 								<h3>your Message to {{firstName}}</h3>
 								<div class="name-field">
 									<label>Your name <small>required</small>
-										<input type="text" required pattern="[a-zA-Z]+">
+										<input type="text" name="name" required pattern="[a-zA-Z]+">
 									</label>
 									<small class="error">Please tell {{firstName}} your Name :-)</small>
 								</div>
 								<div class="email-field">
 									<label>Email <small>required</small>
-										<input type="email" required>
+										<input type="email" name="email" required>
 									</label>
 									<small class="error">An email address is required.</small>
 								</div>
 								<div class="message-field">
 									<label>Textarea Label
-										<textarea rows="10" placeholder="Your message to {{firstName}}"></textarea>
+										<textarea name="message" rows="10" placeholder="Your message to {{firstName}}"></textarea>
 									</label>
 								</div>
 								<button type="submit">Submit</button>

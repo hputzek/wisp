@@ -3,6 +3,8 @@ members:
   paul_schengber:
     firstName : Paul
     lastName : Schengber
+    email: paul@wisp-kollektiv.de
+    id: paul_schengber
     status: Producer
     homepage: http://blog.putzek.com
     facebook: http://www.facebook.de
@@ -16,6 +18,8 @@ members:
   hendrik_putzek:
     firstName : Hendrik
     lastName : Putzek
+    email: hendrik@putzek.com
+    id: hendrik_putzek
     status: Producer
     description: |
 

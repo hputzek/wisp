@@ -15,5 +15,10 @@ dist
 # Exclude bower_components
 app/bower_components
 
+
+
+# Ignore built php files
+app/backend/*.*
+
 # Exclude handlebars-compiled template
 app/js/handlebars-templates.js

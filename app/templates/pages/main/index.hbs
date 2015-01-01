@@ -50,7 +50,8 @@ pagetitle: Startseite
 	<div class="row">
 		<div class="small-12 medium-8 columns">
             <h2>Contact</h2>
-            <form id="contactMain" data-abide="ajax" action="http://www.wisp-kollektiv.de/backend/contact.php" method="post">
+            <form class="contact-form" data-abide="ajax" action="{{contact.mailformAdress}}" method="post">
+               <input type="hidden" name="id" value=main_contact"/>
                 <div class="name-field">
                     <label>Your name <small>required</small>
                         <input type="text" name="name" required pattern="[a-zA-Z]+">

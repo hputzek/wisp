@@ -71,6 +71,14 @@ module.exports = function(grunt) {
 				},
 				src: ['<%= config.app %>/templates/pages/main/**/*.hbs'],
 				dest: '<%= config.dist %>'
+			},
+			php: {
+				options: {
+					layout: 'backend.hbs',
+					ext: '.php'
+				},
+				src: ['<%= config.app %>/templates/backend/**/*.php'],
+				dest: '<%= config.app %>/backend/'
 			}
 		},
 
@@ -81,7 +89,7 @@ module.exports = function(grunt) {
 				tasks: 'scss'
 			},
 			html: {
-				files: ['<%= config.app %>/templates/**/*.hbs'],
+				files: ['<%= config.app %>/templates/**/*.hbs','<%= config.app %>/templates/**/*.php'],
 				tasks: 'html'
 			},
 			handlebars: {
@@ -125,7 +133,8 @@ module.exports = function(grunt) {
 		clean: {
 			html: ["<%= config.app %>/*.html"],
 			css: ["<%= config.dist %>/css/*.css"],
-			tmp: '.tmp'
+			tmp: '.tmp',
+			all: ["<%= config.dist %>"]
 		},
 
 		useminPrepare: {
@@ -163,7 +172,8 @@ module.exports = function(grunt) {
 				files: [
 					// includes files within path and its sub-directories
 					{expand: true,flatten:false, cwd:'<%= config.app %>', src: ['fonts/**'], dest: '<%= config.dist %>/'},
-					{expand: true, flatten:false, cwd:'<%= config.app %>', src: ['img/**'], dest: '<%= config.dist %>/'}
+					{expand: true, flatten:false, cwd:'<%= config.app %>', src: ['img/**'], dest: '<%= config.dist %>/'},
+					{expand: true, flatten:false, cwd:'<%= config.app %>', src: ['backend/**'], dest: '<%= config.dist %>/'}
 				]
 			}
 		}
