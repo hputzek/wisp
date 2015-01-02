@@ -15,6 +15,9 @@ dist
 # Exclude bower_components
 app/bower_components
 
+# Ignore composer stuff
+app/backend/lib/
+
 
 
 # Ignore built php files

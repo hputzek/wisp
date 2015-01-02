@@ -9,7 +9,7 @@ email -> Email Adress (used as reply)
 
 */
 
-require './lib/PHPMailer-master/PHPMailerAutoload.php';
+require './lib/autoload.php';
 
 $members = array(
  "main_contact" => "info@wisp-kollektiv.de",

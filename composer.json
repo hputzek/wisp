@@ -1,0 +1,8 @@
+{
+  "config": {
+    "vendor-dir": "app/backend/lib"
+  },
+  "require": {
+    "phpmailer/phpmailer": "5.2.9"
+  }
+}
