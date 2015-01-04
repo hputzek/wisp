@@ -78,7 +78,7 @@ module.exports = function(grunt) {
 					ext: '.php'
 				},
 				src: ['<%= config.app %>/templates/backend/**/*.php'],
-				dest: '<%= config.app %>/backend/'
+				dest: '<%= config.dist %>/backend/'
 			}
 		},
 
@@ -133,8 +133,7 @@ module.exports = function(grunt) {
 		clean: {
 			html: ["<%= config.app %>/*.html"],
 			css: ["<%= config.dist %>/css/*.css"],
-			tmp: '.tmp',
-			all: ["<%= config.dist %>"]
+			tmp: '.tmp'
 		},
 
 		useminPrepare: {
@@ -182,7 +181,7 @@ module.exports = function(grunt) {
 	// update dev dependencies
 	grunt.registerTask('update', ['devUpdate']);
 	// default task
-	grunt.registerTask('default', ['clean', 'copyDist','sass', 'autoprefixer', 'assemble','handlebars']);
+	grunt.registerTask('default', ['sass', 'autoprefixer', 'assemble','handlebars','copyDist']);
 	// build scss -> css
 	grunt.registerTask('scss', ['sass','autoprefixer']);
 	// build html
@@ -199,5 +198,5 @@ module.exports = function(grunt) {
 	]);
 	grunt.registerTask('copyDist', ['newer:copy']);
 
-	grunt.registerTask('build', ['default','minify','copyDist']);
+	grunt.registerTask('build', ['clean','default','minify']);
 };
