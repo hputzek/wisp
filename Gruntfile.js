@@ -6,6 +6,8 @@ module.exports = function(grunt) {
 		'useminPrepare' : 'grunt-usemin'
 	});
 
+
+
 	grunt.initConfig({
 		pkg: grunt.file.readJSON( 'package.json' ),
 
@@ -63,7 +65,8 @@ module.exports = function(grunt) {
 				assets: '<%= config.dist %>',
 				bower_components: './../app/bower_components',
 				partials: ['<%= config.app %>/templates/partials/{,*/}*.hbs'],
-				data: ['<%= config.app %>/templates/data/**/*.json','<%= config.app %>/templates/data/**/*.yml']
+				data: ['<%= config.app %>/templates/data/**/*.json','<%= config.app %>/templates/data/**/*.yml'],
+				helpers: ['<%= config.app %>/templates/helperImagepath.js>']
 			},
 			site: {
 				options: {
@@ -99,6 +102,10 @@ module.exports = function(grunt) {
 			data: {
 				files: ['<%= config.app %>/js/templates/data/**/*.json','<%= config.app %>/templates/data/**/*.yml'],
 				tasks: 'html'
+			},
+			imagecfg: {
+				files: ['<%= config.dist %>/backend/phpThumb.config.php'],
+				tasks: 'copy:imageCfg'
 			},
 			images: {
 				files: ['<%= config.app %>/img/**/*.*'],
@@ -174,6 +181,11 @@ module.exports = function(grunt) {
 					{expand: true, flatten:false, cwd:'<%= config.app %>', src: ['img/**'], dest: '<%= config.dist %>/'},
 					{expand: true, flatten:false, cwd:'<%= config.app %>', src: ['backend/**'], dest: '<%= config.dist %>/'}
 				]
+			},
+			imageCfg: {
+				files: [
+					{expand: true,flatten:false, cwd:'<%= config.dist %>', src: ['backend/phpThumb.config.php'], dest: 'backend/lib/james-heinrich/phpthumb/phpThumb.config.php'},
+				]
 			}
 		}
 	});
@@ -200,3 +212,4 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('build', ['clean','default','minify']);
 };
+
