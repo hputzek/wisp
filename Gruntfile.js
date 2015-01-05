@@ -57,7 +57,9 @@ module.exports = function(grunt) {
 		},
 
 		assemble: {
+
 			options: {
+				helpers: ['<%= config.app %>/templates/helperImage.js'],
 				flatten: true,
 				layout: 'default.hbs',
 				layoutdir: '<%= config.app %>/templates/layouts',
@@ -65,8 +67,7 @@ module.exports = function(grunt) {
 				assets: '<%= config.dist %>',
 				bower_components: './../app/bower_components',
 				partials: ['<%= config.app %>/templates/partials/{,*/}*.hbs'],
-				data: ['<%= config.app %>/templates/data/**/*.json','<%= config.app %>/templates/data/**/*.yml'],
-				helpers: ['<%= config.app %>/templates/helperImagepath.js>']
+				data: ['<%= config.app %>/templates/data/**/*.json','<%= config.app %>/templates/data/**/*.yml']
 			},
 			site: {
 				options: {
@@ -184,7 +185,7 @@ module.exports = function(grunt) {
 			},
 			imageCfg: {
 				files: [
-					{expand: true,flatten:false, cwd:'<%= config.dist %>', src: ['backend/phpThumb.config.php'], dest: 'backend/lib/james-heinrich/phpthumb/phpThumb.config.php'},
+					{expand: true,flatten:false, cwd:'<%= config.dist %>', src: ['backend/phpThumb.config.php'], dest: 'backend/lib/james-heinrich/phpthumb/'},
 				]
 			}
 		}

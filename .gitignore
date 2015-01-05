@@ -18,6 +18,8 @@ app/bower_components
 # Ignore composer stuff
 app/backend/lib/
 
+# Ignore private settings
+settings.yml
 
 
 # Ignore built php files

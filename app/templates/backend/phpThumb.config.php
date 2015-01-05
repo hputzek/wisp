@@ -11,11 +11,10 @@
 //                                                         ///
 //////////////////////////////////////////////////////////////
 
-define('phpThumbConfigFileVersion', '1.7.12');
 ob_start();
-if (!file_exists(dirname(__FILE__).'/lib/james-heinrich/phpthumb/phpthumb.functions.php') || !include_once(dirname(__FILE__).'/lib/james-heinrich/phpthumb/phpthumb.functions.php')) {
+if (!file_exists(dirname(__FILE__).'/phpthumb.functions.php') || !include_once(dirname(__FILE__).'/phpthumb.functions.php')) {
 	ob_end_flush();
-	die('failed to include_once(phpthumb.functions.php) - realpath="'.realpath(dirname(__FILE__).'/lib/james-heinrich/phpthumb/phpthumb.functions.php').'"');
+	die('failed to include_once(phpthumb.functions.php) - realpath="'.realpath(dirname(__FILE__).'/phpthumb.functions.php').'"');
 }
 ob_end_clean();
 
@@ -37,9 +36,9 @@ $PHPTHUMB_CONFIG['document_root'] = realpath((getenv('DOCUMENT_ROOT') && preg_ma
 
 // * Security configuration
 $PHPTHUMB_CONFIG['high_security_enabled']       = true;    // DO NOT DISABLE THIS ON ANY PUBLIC-ACCESSIBLE SERVER. If disabled, your server is vulnerable to hacking attempts, both on your server and via your server to other servers. When enabled, requires 'high_security_password' set to be set and requires the use of phpThumbURL() function (at the bottom of phpThumb.config.php) to generate hashed URLs
-$PHPTHUMB_CONFIG['high_security_password']      = '';      // required if 'high_security_enabled' is true, and must be at complex (uppercase, lowercase, numbers, punctuation, etc -- punctuation is strongest, lowercase is weakest; see PasswordStrength() in phpThumb.php). You can use a password generator like http://silisoftware.com/tools/password-random.php to generate a strong password
+$PHPTHUMB_CONFIG['high_security_password']      = '{{settings.imgHashPassphrase}}';      // required if 'high_security_enabled' is true, and must be at complex (uppercase, lowercase, numbers, punctuation, etc -- punctuation is strongest, lowercase is weakest; see PasswordStrength() in phpThumb.php). You can use a password generator like http://silisoftware.com/tools/password-random.php to generate a strong password
 $PHPTHUMB_CONFIG['high_security_url_separator'] = '&';     // should almost always be left as '&'. Must be a single character. Do not change to '&amp;' -- htmlspecialchars wrapped around phpThumbURL() takes care of this without breaking the hash
-$PHPTHUMB_CONFIG['disable_debug']               = false;    // DO NOT ENABLE THIS ON ANY PUBLIC-ACCESSIBLE SERVER. Prevent phpThumb from displaying any information about your system. If true, phpThumbDebug and error messages will be disabled. If set to false (debug messages enabled) then debug mode will be FORCED -- ONLY debug output will be presented, no actual thumbnail (to avoid accidentally leaving debug mode enabled on a production server)
+$PHPTHUMB_CONFIG['disable_debug']               = true;    // DO NOT ENABLE THIS ON ANY PUBLIC-ACCESSIBLE SERVER. Prevent phpThumb from displaying any information about your system. If true, phpThumbDebug and error messages will be disabled. If set to false (debug messages enabled) then debug mode will be FORCED -- ONLY debug output will be presented, no actual thumbnail (to avoid accidentally leaving debug mode enabled on a production server)
 $PHPTHUMB_CONFIG['allow_src_above_docroot']     = false;   // if false (default) only allow src within document_root; if true, allow src to be anywhere in filesystem
 $PHPTHUMB_CONFIG['allow_src_above_phpthumb']    = true;    // if true (default), allow src to be anywhere in filesystem; if false only allow src within sub-directory of phpThumb installation
 $PHPTHUMB_CONFIG['auto_allow_symlinks']         = true;    // if true (default), allow symlink target directories without explicitly whitelisting them
@@ -248,7 +247,7 @@ $PHPTHUMB_DEFAULTS_DISABLEGETPARAMS  = false; // if true, GETstring parameters w
 //   require_once('phpThumb/phpThumb.config.php');
 //   echo '<img src="'.htmlspecialchars(phpThumbURL('src=/images/pic.jpg&w=50', '/phpThumb/phpThumb.php')).'">';
 
-function phpThumbURL($ParameterString, $path_to_phpThumb='/lib/james-heinrich/phpthumb/phpThumb.php') {
+/*function phpThumbURL($ParameterString, $path_to_phpThumb='/lib/james-heinrich/phpthumb/phpThumb.php') {
 	global $PHPTHUMB_CONFIG;
 	return $path_to_phpThumb.'?'.$ParameterString.$PHPTHUMB_CONFIG['high_security_url_separator'].'hash='.md5($ParameterString.$PHPTHUMB_CONFIG['high_security_password']);
-}
+}*/
