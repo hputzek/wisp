@@ -143,4 +143,13 @@
 	}
   }
 }
+@media #{$small-only} {
+  #wisp-crew-info .panel {
+	margin-top: rem-calc(20);
+  }
+
+  .tabs-content.vertical > .content {
+	padding: 0;
+  }
+}
 

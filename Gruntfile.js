@@ -184,9 +184,8 @@ module.exports = function(grunt) {
 				]
 			},
 			imageCfg: {
-				files: [
-					{expand: true,flatten:false, cwd:'<%= config.dist %>', src: ['backend/phpThumb.config.php'], dest: 'backend/lib/james-heinrich/phpthumb/'},
-				]
+				src:  '<%= config.dist %>/backend/phpThumb.config.php',
+				dest: '<%= config.dist %>/backend/lib/james-heinrich/phpthumb/phpThumb.config.php'
 			}
 		}
 	});

@@ -26,7 +26,7 @@ body {
 }
 
 
-@-webkit-keyframes STAR-MOVE {
+@keyframes STAR-MOVE {
   from {
     left: 0;
     top: 0;
@@ -80,5 +80,32 @@ body {
   z-index:-1;
   width: 100%;
   height: 100%;
+}
+
+.main-logo {
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+@media #{$small-only} {
+  .main-logo {
+    img {
+      margin-bottom: rem-calc(20);
+    }
+  }
+}
+
+section.start{
+  background:none;
+  padding-top:65px;
+  margin-bottom:0;
+}
+
+@media #{$medium-up} {
+  section.start{
+    padding-top:120px;
+  }
 }
 
