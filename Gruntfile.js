@@ -94,7 +94,7 @@ module.exports = function(grunt) {
 			},
 			html: {
 				files: ['<%= config.app %>/templates/**/*.hbs','<%= config.app %>/templates/**/*.php'],
-				tasks: 'html'
+				tasks: 'html:dev'
 			},
 			handlebars: {
 				files: ['<%= config.app %>/js/templates/**/*.hbs'],
@@ -102,7 +102,7 @@ module.exports = function(grunt) {
 			},
 			data: {
 				files: ['<%= config.app %>/js/templates/data/**/*.json','<%= config.app %>/templates/data/**/*.yml'],
-				tasks: 'html'
+				tasks: 'html:dev'
 			},
 			imagecfg: {
 				files: ['<%= config.dist %>/backend/phpThumb.config.php'],
@@ -193,11 +193,17 @@ module.exports = function(grunt) {
 	// update dev dependencies
 	grunt.registerTask('update', ['devUpdate']);
 	// default task
-	grunt.registerTask('default', ['sass', 'autoprefixer', 'assemble','handlebars','copyDist']);
+	grunt.registerTask('default', ['sass', 'autoprefixer', 'html:dev','handlebars','copyDist']);
 	// build scss -> css
 	grunt.registerTask('scss', ['sass','autoprefixer']);
 	// build html
-	grunt.registerTask('html', ['assemble']);
+	grunt.registerTask('html', function(target) {
+		if (target == null) {
+			return grunt.warn('Build target must be specified, production or dev');
+		}
+		grunt.config('target', target);
+		grunt.task.run('assemble');
+	});
 	// dev Server
 	grunt.registerTask('serve', ['default','connect', 'watch']);
 	// minification and concat (css, js)
@@ -210,6 +216,8 @@ module.exports = function(grunt) {
 	]);
 	grunt.registerTask('copyDist', ['newer:copy']);
 
-	grunt.registerTask('build', ['clean','default','minify']);
+	grunt.registerTask('build', ['clean','sass', 'autoprefixer', 'html:production','handlebars','copyDist','minify']);
+
+
 };
 

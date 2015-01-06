@@ -193,34 +193,42 @@ module.exports.foo = function (str)  {  return  str; };
             var imgPath = settings.imgPath;
             var imgPhpScriptPath = settings.imgPhpScriptPath;
             var imgSizes = sizes.split(',');
-           // create responsive image sizes
-            var responsiveSizes = {
-                large: [],
-                medium: [],
-                small: []
-            };
-            for (index = 1; index <= 12; ++index) {
-                responsiveSizes.small['small-' + index] = 400/12 * index;
-                responsiveSizes.medium['medium-' + index] = 768/12 * index;
-                responsiveSizes.large['large-' + index] = 1200/12 * index;
-            }
+            var taskTarget= grunt.config('target');
 
-            // generate image Urls
-            var html = '<img title="' + title + '" data-interchange="';
-            if(isNaN(imgSizes[0])){
-                var urlSmall = imgPhpScriptPath + '?src=' + imgPath + path +  '&w=' + responsiveSizes.small[imgSizes[0]] + '&hash=' + getHash(responsiveSizes.small[imgSizes[0]]);
-                var urlMedium = imgPhpScriptPath + '?src=' + imgPath + path +  '&w=' + responsiveSizes.medium[imgSizes[1]] + '&hash=' + getHash(responsiveSizes.medium[imgSizes[1]]);
-                var urlLarge = imgPhpScriptPath + '?src=' + imgPath + path +  '&w=' + responsiveSizes.large[imgSizes[2]] + '&hash=' + getHash(responsiveSizes.large[imgSizes[2]]);
-                // generate image tag
-               html+= '[' + urlSmall + ', (small)],[ ';
-                html+= urlMedium + ', (medium)],[ ';
-                html+= urlLarge + ', (large)';
-                html+= ']"';
-                html += '/>'
+           // create responsive image sizes
+            if(taskTarget === 'production'){
+                var responsiveSizes = {
+                    large: [],
+                    medium: [],
+                    small: []
+                };
+                for (index = 1; index <= 12; ++index) {
+                    responsiveSizes.small['small-' + index] = 400/12 * index;
+                    responsiveSizes.medium['medium-' + index] = 768/12 * index;
+                    responsiveSizes.large['large-' + index] = 1200/12 * index;
+                }
+
+                // generate image Urls
+                var html = '<img title="' + title + '" data-interchange="';
+                if(isNaN(imgSizes[0])){
+                    var urlSmall = imgPhpScriptPath + '?src=' + imgPath + path +  '&w=' + responsiveSizes.small[imgSizes[0]] + '&hash=' + getHash(responsiveSizes.small[imgSizes[0]]);
+                    var urlMedium = imgPhpScriptPath + '?src=' + imgPath + path +  '&w=' + responsiveSizes.medium[imgSizes[1]] + '&hash=' + getHash(responsiveSizes.medium[imgSizes[1]]);
+                    var urlLarge = imgPhpScriptPath + '?src=' + imgPath + path +  '&w=' + responsiveSizes.large[imgSizes[2]] + '&hash=' + getHash(responsiveSizes.large[imgSizes[2]]);
+                    // generate image tag
+                    html+= '[' + urlSmall + ', (small)],[ ';
+                    html+= urlMedium + ', (medium)],[ ';
+                    html+= urlLarge + ', (large)';
+                    html+= ']"';
+                    html += '/>'
+                }
+                else {
+                    // this can be extended to allow for pixel values instead of automatic calculated pixel values
+                }
             }
             else {
-                    // this can be extended to allow for pixel values instead of automatic calculated pixel values
+                var html = '<img title ="' + title + '" src="img/'+ path + '"/>'
             }
+
 
             function getHash(size){
                 return md5('src=' + imgPath + path + '&w=' + size + imgHashPassphrase );
