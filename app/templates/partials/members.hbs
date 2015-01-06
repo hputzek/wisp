@@ -27,7 +27,11 @@
 						<div class="front">
 							<div class="wisp-member">
 								<section class="about">
+									{{#if image}}
+                                        <div class="member-image">{{{image image image "small-12,medium-12,large-12"}}}</div>
+									{{/if}}
 									<h4><i class="fa fa-user"></i> {{firstName}}{{lastName}}<br/><small>{{status}}</small></h4>
+
 									{{#markdown}}{{description}}{{/markdown}}
 								</section>
 								<section class="connect">

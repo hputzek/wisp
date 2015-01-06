@@ -1,4 +1,3 @@
-imagePath: /img/
 members:
   paul_schengber:
     firstName : Paul
@@ -13,7 +12,7 @@ members:
     soundcloud: http://www.soundcloud.com
     description: |
 
-    showImage: true
+    image: "members/paul-schengber.jpg"
 
   hendrik_putzek:
     firstName : Hendrik
@@ -23,15 +22,9 @@ members:
     status: Producer
     description: |
 
-
-    showImage: true
-
   max_mustermann:
     firstName : Max
     lastName : Mustermann
     status: Producer / Chief Assistant
     description: |
                   Ich bin Max Mustermann Lorem Ipsum
-
-
-    showImage: true
