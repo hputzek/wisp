@@ -75,10 +75,12 @@ $fa-font-path: "../fonts/font-awesome";
 // this mixin can show the current breakpoint in frontend
 @import "components/show-breakpoints";
 
+@import "components/main-menu";
 @import "components/typographie";
 @import "components/accordion";
 @import "components/members";
 @import "components/sections";
+@import "components/wispcast";
 
 
 // this mixin can show the current breakpoint in frontend

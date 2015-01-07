@@ -194,22 +194,21 @@ module.exports.foo = function (str)  {  return  str; };
             var imgPhpScriptPath = settings.imgPhpScriptPath;
             var imgSizes = sizes.split(',');
             var taskTarget= grunt.config('target');
-
+            var responsiveSizes = {
+                large: [],
+                medium: [],
+                small: []
+            };
+            for (index = 1; index <= 12; ++index) {
+                responsiveSizes.small['small-' + index] = 400/12 * index;
+                responsiveSizes.medium['medium-' + index] = 768/12 * index;
+                responsiveSizes.large['large-' + index] = 1200/12 * index;
+            }
+            var html = '';
            // create responsive image sizes
             if(taskTarget === 'production'){
-                var responsiveSizes = {
-                    large: [],
-                    medium: [],
-                    small: []
-                };
-                for (index = 1; index <= 12; ++index) {
-                    responsiveSizes.small['small-' + index] = 400/12 * index;
-                    responsiveSizes.medium['medium-' + index] = 768/12 * index;
-                    responsiveSizes.large['large-' + index] = 1200/12 * index;
-                }
-
                 // generate image Urls
-                var html = '<img title="' + title + '" data-interchange="';
+                html = '<img title="' + title + '" data-interchange="';
                 if(isNaN(imgSizes[0])){
                     var urlSmall = imgPhpScriptPath + '?src=' + imgPath + path +  '&w=' + responsiveSizes.small[imgSizes[0]] + '&hash=' + getHash(responsiveSizes.small[imgSizes[0]]);
                     var urlMedium = imgPhpScriptPath + '?src=' + imgPath + path +  '&w=' + responsiveSizes.medium[imgSizes[1]] + '&hash=' + getHash(responsiveSizes.medium[imgSizes[1]]);
@@ -226,7 +225,12 @@ module.exports.foo = function (str)  {  return  str; };
                 }
             }
             else {
-                var html = '<img title ="' + title + '" src="img/'+ path + '"/>'
+                if(isNaN(imgSizes[0])){
+                    html = '<img title ="' + title + '" src="img/'+ path + '" style="width:' + responsiveSizes.large[imgSizes[2]] + 'px;"/>'
+                }
+                else {
+                    html = '<img title ="' + title + '" src="img/'+ path + '" style="width:' + [imgSizes[2]] + 'px;"/>'
+                }
             }
 
 
