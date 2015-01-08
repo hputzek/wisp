@@ -6,6 +6,34 @@
  *
  * @author Hendrik Putzek
  */
+;(function($) {
+
+	var $f = $('iframe'),
+		url = $f.attr('src').split('?')[0];
+
+	if ( window.addEventListener )
+		window.addEventListener('message', onMessageReceived, false);
+	else
+		window.attachEvent('onmessage', onMessageReceived, false);
+
+	function onMessageReceived(e) {
+
+		var data = JSON.parse(e.data);
+
+		switch (data.event) {
+			case 'ready':
+				$('body').css('opacity',1);
+				var data = { method: 'setVolume', value: '0' };
+				$f[0].contentWindow.postMessage(JSON.stringify(data), url);
+				data = {method: 'seekTo', value: 15.9};
+				$f[0].contentWindow.postMessage(JSON.stringify(data), url);
+				data = { method: 'play' };
+				$f[0].contentWindow.postMessage(JSON.stringify(data), url);
+				break;
+		}
+
+	}
+})(jQuery);
 
 if (typeof WISP === 'undefined') {
 	WISP = jQuery.extend({},{});
@@ -19,6 +47,8 @@ WISP.initPlugins = (function () {
 	 * initialize method
 	 */
 	function initialize() {
+		WISP.tools.extendToScreenHeight('.intro-video-wrapper, .start', -45);
+		WISP.tools.extendToScreenHeight('.intro-video', 140);
 		initMembers();
 		initWow();
 		initMainMenu();

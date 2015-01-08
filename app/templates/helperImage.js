@@ -246,14 +246,19 @@ module.exports.foo = function (str)  {  return  str; };
             return html;
         });
         Handlebars.registerHelper("imageurl", function(path, size) {
-
             var grunt = require('grunt');
+            var taskTarget= grunt.config('target');
             var settings = grunt.file.readYAML('app/templates/data/settings.yml');
             var imgHashPassphrase = settings.imgHashPassphrase;
             var imgPath = settings.imgPath;
             var imgPhpScriptPath = settings.imgPhpScriptPath;
-            var url = imgPhpScriptPath + '?src=' + imgPath + path +  '&w=' + size + '&hash=' + getHash();
-
+            var url = '';
+            if(taskTarget === 'production'){
+                url = imgPhpScriptPath + '?src=' + imgPath + path +  '&w=' + size + '&hash=' + getHash();
+            }
+            else {
+                url = 'img/'+ path;
+            }
             function getHash(){
                 return md5('src=' + imgPath + path + '&w=' + size + imgHashPassphrase );
             }

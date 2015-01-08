@@ -28,16 +28,25 @@ WISP.tools = (function () {
 		if(duration > 0) {
 			animationDuration = duration;
 		}
-		$('html,body').animate({scrollTop:$($(hash)).offset().top}, animationDuration);
+		$('html,body').animate({scrollTop:$($(hash)).offset().top + -45 + 'px'}, animationDuration);
 		if(hash.charAt(0) == '#') {
 			window.location.hash = hash;
 		}
 	}
 
+	function extendToScreenHeight(elementSelector, nudge){
+		var _nudge = '0';
+		if(nudge != undefined){
+			_nudge = nudge
+		}
+		$(elementSelector).css('min-height', $(window).height() + nudge + 'px');
+	}
+
 	// expose public functions
 	return {
 		initialize: initialize,
-		scrollToAnchor: scrollToAnchor
+		scrollToAnchor: scrollToAnchor,
+		extendToScreenHeight: extendToScreenHeight
 	};
 }) ();
 

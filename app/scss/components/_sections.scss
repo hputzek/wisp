@@ -1,10 +1,20 @@
 body {
   background-image: url("../img/bg/bg_stars.jpg");
+  margin-top: $topbar-height;
  > section {
     margin-bottom: rem-calc(50);
     padding: rem-calc(20) 0;
     background: #fff;
   }
+}
+
+html {
+  background-color: #000;
+}
+
+.js body {
+  opacity: 0;
+  transition: opacity 1s;
 }
 
 @media #{$medium-up} {
@@ -85,7 +95,7 @@ body {
 .main-logo {
   img {
     display: block;
-    margin: 0 auto;
+    margin: 0 auto rem-calc(80) auto;
   }
 }
 
@@ -98,9 +108,26 @@ body {
 }
 
 section.start{
-  background:none;
+  background: none;
+  background-size: cover;
   padding-top:65px;
   margin-bottom:0;
+  position: relative;
+  z-index: 2;
+
+}
+
+.intro-video-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  top:0;
+}
+.intro-video {
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 @media #{$medium-up} {

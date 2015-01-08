@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js">
 
 <head>
 	<meta charset="utf-8">
@@ -9,6 +9,9 @@
 	<meta name="description" content="Demo Template">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        document.documentElement.className = document.documentElement.className.replace("no-js","js");
+    </script>
 	<link href='http://fonts.googleapis.com/css?family=Lato:100,300' rel='stylesheet' type='text/css'>
 	<!-- build:css css/app.css -->
 	<link rel="stylesheet" href="{{bower_components}}/wow/css/libs/animate.css">
@@ -16,7 +19,7 @@
 	<!-- endbuild -->
 </head>
 
-<body fullbleed layout vertical>
+<body>
 {{> body}}
 {{> javascriptsFooter}}
 </body>
