@@ -3,4 +3,11 @@
      margin-right: rem-calc(5);
     font-size: 1.1em;
   }
+  // remove background from top bar menu
+  .top-bar-section ul li {
+    background: #000;
+    &.active a {
+      text-decoration: underline;
+    }
+  }
 }

@@ -47,7 +47,10 @@ WISP.initPlugins = (function () {
 	}
 
 	function initMainMenu() {
-		$('#topbar').scrollupbar();
+		if (matchMedia(Foundation.media_queries['small-only','medium-only']).matches){
+			$('#topbar').scrollupbar();
+		};
+
 		$('#topbar').onePageNav({
 			currentClass: 'active',
 			changeHash: true,

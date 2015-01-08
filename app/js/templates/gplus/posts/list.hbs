@@ -1,7 +1,7 @@
 <dl class="accordion custom-accordion wow fadeInLeft" style="display: hidden" data-wow-duration="3s" data-accordion>
 	{{#each items}}
 		<dd class="accordion-navigation">
-			<a href="#panel-{{@index}}" class="js-no-anchor-scroll"><i class="fa fa-fw fa-arrow-circle-o-right"></i>&nbsp;&nbsp;{{{trimS this.object.attachments.0.displayName 0 80}}}
+			<a href="#panel-{{@index}}" class="js-no-anchor-scroll">{{{trimS this.object.attachments.0.displayName 0 80}}}
 			</a>
 			<div id="panel-{{@index}}" class="content">
 				<div class="row">

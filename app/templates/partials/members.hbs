@@ -7,19 +7,16 @@
 <div class="row">
 	<div class="small-12 columns">
 		<dl class="tabs vertical" data-tab data-options="deep_linking:true">
-            <dd><a href="#wisp-crew-info"><i class="fa fa-2x fa-users"> </i></a></dd>
+            <dd><a href="#wisp-crew-info"><h3> Universe</h3></a></dd>
 			{{#each members}}
 				<dd><a href="#wisp-crew-{{firstName}}-{{lastName}}">{{firstName}} {{lastName}}</a></dd>
 			{{/each}}
 		</dl>
 		<div class="tabs-content vertical">
             <div class="content active" id="wisp-crew-info">
-				<div class="panel">
-                    <p>
-                   		<h3><i class="fa fa-info-circle"></i> Universe</h3>
-						<p>The Wisp Universe consists of a diversity of artists, technicians & helping hands</p>
-                    </p>
-				</div>
+				<p>
+					The Wisp Universe consists of a diversity of artists, technicians & helping hands
+				</p>
 			</div>
 			{{#each members}}
 				<div class="content" id="wisp-crew-{{firstName}}-{{lastName}}">
@@ -30,7 +27,7 @@
 									{{#if image}}
                                         <div class="member-image">{{{image image image "100,100,100"}}}</div>
 									{{/if}}
-									<h4><i class="fa fa-user"></i> {{firstName}}{{lastName}}<br/><small>{{status}}</small></h4>
+									<h4>{{firstName}}{{lastName}}<br/><small>{{status}}</small></h4>
 
 									{{#markdown}}{{description}}{{/markdown}}
 								</section>
