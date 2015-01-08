@@ -209,20 +209,26 @@ module.exports.foo = function (str)  {  return  str; };
             if(taskTarget === 'production'){
                 // generate image Urls
                 html = '<img title="' + title + '" data-interchange="';
+                var urlSmall = '';
+                var urlMedium = '';
+                var urlLarge = '';
                 if(isNaN(imgSizes[0])){
-                    var urlSmall = imgPhpScriptPath + '?src=' + imgPath + path +  '&w=' + responsiveSizes.small[imgSizes[0]] + '&hash=' + getHash(responsiveSizes.small[imgSizes[0]]);
-                    var urlMedium = imgPhpScriptPath + '?src=' + imgPath + path +  '&w=' + responsiveSizes.medium[imgSizes[1]] + '&hash=' + getHash(responsiveSizes.medium[imgSizes[1]]);
-                    var urlLarge = imgPhpScriptPath + '?src=' + imgPath + path +  '&w=' + responsiveSizes.large[imgSizes[2]] + '&hash=' + getHash(responsiveSizes.large[imgSizes[2]]);
-                    // generate image tag
-                    html+= '[' + urlSmall + ', (small)],[ ';
-                    html+= urlMedium + ', (medium)],[ ';
-                    html+= urlLarge + ', (large)';
-                    html+= ']"';
-                    html += '/>'
+                    urlSmall = imgPhpScriptPath + '?src=' + imgPath + path +  '&w=' + responsiveSizes.small[imgSizes[0]] + '&hash=' + getHash(responsiveSizes.small[imgSizes[0]]);
+                    urlMedium = imgPhpScriptPath + '?src=' + imgPath + path +  '&w=' + responsiveSizes.medium[imgSizes[1]] + '&hash=' + getHash(responsiveSizes.medium[imgSizes[1]]);
+                    urlLarge = imgPhpScriptPath + '?src=' + imgPath + path +  '&w=' + responsiveSizes.large[imgSizes[2]] + '&hash=' + getHash(responsiveSizes.large[imgSizes[2]]);
+
                 }
                 else {
-                    // this can be extended to allow for pixel values instead of automatic calculated pixel values
+                    urlSmall = imgPhpScriptPath + '?src=' + imgPath + path +  '&w=' + imgSizes[0] + '&hash=' + getHash(imgSizes[0]);
+                    urlMedium = imgPhpScriptPath + '?src=' + imgPath + path +  '&w=' + imgSizes[1] + '&hash=' + getHash(imgSizes[1]);
+                    urlLarge = imgPhpScriptPath + '?src=' + imgPath + path +  '&w=' + imgSizes[2] + '&hash=' + getHash(imgSizes[2]);
                 }
+
+                html+= '[' + urlSmall + ', (small)],[ ';
+                html+= urlMedium + ', (medium)],[ ';
+                html+= urlLarge + ', (large)';
+                html+= ']"';
+                html += '/>'
             }
             else {
                 if(isNaN(imgSizes[0])){
