@@ -14,20 +14,14 @@
 .wisp-member {
 	position:relative;
 	margin: rem-calc(20) 0 rem-calc(50) 0;
-	border-radius:4px;
 	overflow:hidden;
-	box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
 .wisp-member  section:first-child {
-	background: #eee;
-	background-position: bottom;
-	background-size: cover;
+
 }
 
 .wisp-member section:nth-child(2) {
-
-	background: #888;
 	background-position: top;
 	background-size: cover;
 }
@@ -35,8 +29,7 @@
 .wisp-member {
 	.about{
 		padding:30px;
-		color:white;
-		text-shadow: 0px 1px 0px rgba(0,0,0,0.3);
+	    background: #fff;
 	}
 
 	.connect-icons{
@@ -153,7 +146,7 @@
 	padding: 0;
   }
   .wisp-member .connect-icons li {
-	width: 50px;
+	width: 35px;
 	font-size: 1.2em;
   }
   .wisp-member .connect-icons li  [class*="text-"]{
@@ -163,9 +156,17 @@
 
 
 .member-image {
-  float: right;
   img {
 	clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+}
+
+@media #{$large-up} {
+  .member-image {
+	img {
+	  float: left;
+	  margin-right: rem-calc(20);
+	}
   }
 }
 

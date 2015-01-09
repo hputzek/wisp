@@ -11,8 +11,20 @@ members:
     skype:
     soundcloud: http://www.soundcloud.com
     description: |
+                    PAUL SCHENGBER, geboren 1985 begeisterte sich schon seit dem Kindesalter für Musik und Klänge aller Art. Die Begeisterung für die Produktion elektronischer Musik und diverser Soundcollagen brachte ihn dazu den Kurs „Electronic Music Producer“ an der SAE zu belegen.
 
-    image: "members/paul-schengber.jpg"
+                    Nach erfolgreichem Abschluss, begann er an der Hochschule Darmstadt den Studiengang „Sound“. Momentan befindet er sich im sechsten Semester und hat in der Zeit des Studiums Projekte aller Art realisieren können. Mikrofonierung, Produktion und Vertonung von Filmen gehörten hier zu den Hauptaufgaben. Er entwickelte in dieser Zeit aber ebenso hohes Interesse an Film, Animation (Stop Motion, 3D-Animation) und Interface-Technik.
+
+                    Die Entwicklung eines Interfaces namens „Ziggybox“, bestehend aus Aschenbechern und Zigarettenschachteln, als Midi-Steuerungseinheit für das Musikprogramm Ableton Live, zusammen mit Christian Losert, brachte ihn als Aussteller auf die Ausstellung „ARS Electronica 2010“ und 2011 auf den „ADC Kongress“ in Frankfurt.
+
+                    Zudem produziert er Visualisierungen für die Club-Szene, die er in Zukunft mit einem eigen gebauten Interface steuern wird.
+
+                    Paul Schengber lebt momentan in Mainz und hat 2011 den „Master of Arts“ Studiengan mit dem Schwerpunkt „Sound“ an der Hochschule Darmstadt begonnen.
+
+                    Skills: Sounddesign, Filmvertonung, Filmschnitt, Animation, Visualisierung, Interfacetechnik, Audiovisuelle Installationen
+
+    image: members/paul-schengber.jpg
+
 
   hendrik_putzek:
     firstName : Hendrik

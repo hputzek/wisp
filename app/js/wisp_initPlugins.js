@@ -42,22 +42,6 @@
 Foundation.utils.register_media('small-only', 'custom-mq-small-only');
 Foundation.utils.register_media('medium-only', 'custom-mq-medium-only');
 
-$(document).foundation({
-	accordion: {
-		callback : function (accordion) {
-			console.log(accordion.prev('a'));
-			WISP.tools.scrollToAnchor(accordion.prev('a'));
-		}
-	},
-	tab: {
-		callback : function (tab) {
-			WISP.initPlugins.renderMemberFlipcard($(tab).find('a').attr('href'));
-		}
-	}
-});
-
-
-
 if (typeof WISP === 'undefined') {
 	WISP = jQuery.extend({},{});
 }
@@ -75,6 +59,7 @@ WISP.initPlugins = (function () {
 		initWow();
 		initMainMenu();
 		initContactForms();
+		//setAnchorLinks();
 	}
 
 	function initContactForms(){
@@ -124,10 +109,13 @@ WISP.initPlugins = (function () {
 	}
 
 	function initMembers() {
-		$(".connect-icons a").hover(function(){
-			$(".connect-box").toggleClass("color-"+ this.className );
-			$(".text-"+ this.className).toggleClass("show");
-		});
+		if (matchMedia(Foundation.media_queries['medium']).matches){
+			$(".connect-icons a").hover(function(){
+				$(".connect-box").toggleClass("color-"+ this.className );
+				$(".text-"+ this.className).toggleClass("show");
+			});
+		};
+
 	}
 
 	function renderMemberFlipcard(parentElement) {
@@ -180,3 +168,26 @@ if (typeof WISP.Bootstrap !== 'undefined') {
 	WISP.Bootstrap.registerBootstrap(WISP.initPlugins);
 }
 
+$(document).foundation({
+	accordion: {
+		callback : function (accordion) {
+			console.log(accordion.prev('a'));
+			WISP.tools.scrollToAnchor(accordion.prev('a'));
+		}
+	},
+	tab: {
+		callback : function (tab) {
+			WISP.initPlugins.renderMemberFlipcard($(tab).find('a').attr('href'));
+		}
+	}
+});
+
+
+$(window).on('hashchange', function(e) {
+	console.log(e);
+	setTimeout(function(){
+		$('html,body').animate({scrollTop:$($(window.location.hash)).offset().top + -45 + 'px'}, 300);
+	},1);
+
+
+});

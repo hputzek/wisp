@@ -5,6 +5,7 @@ body {
     margin-bottom: rem-calc(50);
     padding: rem-calc(20) 0;
     background: #fff;
+   position: relative;
   }
 }
 
@@ -13,7 +14,8 @@ html {
 }
 
 .js body {
-  opacity: 0;
+  //TODO: make solve js issue with that
+  //opacity: 0;
   transition: opacity 1s;
 }
 
@@ -31,6 +33,7 @@ html {
     > section {
       margin-bottom: rem-calc(300);
       padding: rem-calc(40) 0;
+      min-height: rem-calc(200);
     }
   }
 }
@@ -133,6 +136,24 @@ section.start{
 @media #{$medium-up} {
   section.start{
     padding-top:120px;
+  }
+}
+
+.section-image {
+  position: absolute;
+  right: rem-calc(10);
+  bottom: 0;
+}
+
+@media #{$medium-up} {
+  .section-image {
+    right: rem-calc(30);
+  }
+}
+
+@media #{$large-up} {
+  .section-image {
+    right: 3%;
   }
 }
 

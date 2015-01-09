@@ -82,7 +82,7 @@
                 });
 
                 if (settings.trigger.toLowerCase() == "click") {
-                    $dom.find('.trigger-flip').click(function(e) {
+                    $dom.find('[data-trigger-flip]').click(function(e) {
                         e.preventDefault();
                         if ($dom.data("flipped")) {
                             unflip($dom);
