@@ -1,7 +1,9 @@
 <dl class="accordion custom-accordion wow fadeInLeft" style="display: hidden" data-wow-duration="3s" data-wow-delay="1s" data-accordion>
 	{{#each items}}
 		<dd class="accordion-navigation">
-			<a href="#panel-{{@index}}" class="js-no-anchor-scroll">{{{trimS this.object.attachments.0.displayName 0 80}}}
+			<a href="#panel-{{@index}}" class="js-no-anchor-scroll">
+			{{{trimS this.object.attachments.0.displayName 0 80}}}
+			{{{trimS this.object.content 0 80}}}
 			</a>
 			<div id="panel-{{@index}}" class="content">
 				<div class="row">
@@ -39,6 +41,16 @@
 
 										<div class="panel tertiary-150" data-js-link-url="{{this.url}}">
 											<h5><i class="fa fa-calendar-o"></i> {{this.displayName}}</h5>
+
+											<p>{{this.content}}</p>
+										</div>
+									{{/compare}}
+									{{#compare this.objectType "note"}} {{! if attachment is a note }}
+										<div class="panel tertiary-150 clearfix" data-js-link-url="{{this.url}}">
+											<a href="{{this.url}}">asdfasdfasdfafsddsf
+												<img class="gplus-news-image left" src="{{this.image.url}}"/>
+											</a>
+											<h5>{{this.displayName}}</h5>
 
 											<p>{{this.content}}</p>
 										</div>
