@@ -6,6 +6,9 @@
  *
  * @author Hendrik Putzek
  */
+
+
+
 ;(function($) {
 
 	var $f = $('iframe'),
@@ -22,7 +25,7 @@
 
 		switch (data.event) {
 			case 'ready':
-				$('body').css('opacity',1);
+				$('body').css('opacity','1');
 				var data = { method: 'setVolume', value: '0' };
 				$f[0].contentWindow.postMessage(JSON.stringify(data), url);
 				data = {method: 'seekTo', value: 15.9};
@@ -34,6 +37,26 @@
 
 	}
 })(jQuery);
+
+// Register custom media query
+Foundation.utils.register_media('small-only', 'custom-mq-small-only');
+Foundation.utils.register_media('medium-only', 'custom-mq-medium-only');
+
+$(document).foundation({
+	accordion: {
+		callback : function (accordion) {
+			console.log(accordion.prev('a'));
+			WISP.tools.scrollToAnchor(accordion.prev('a'));
+		}
+	},
+	tab: {
+		callback : function (tab) {
+			WISP.initPlugins.renderMemberFlipcard($(tab).find('a').attr('href'));
+		}
+	}
+});
+
+
 
 if (typeof WISP === 'undefined') {
 	WISP = jQuery.extend({},{});
@@ -47,8 +70,7 @@ WISP.initPlugins = (function () {
 	 * initialize method
 	 */
 	function initialize() {
-		WISP.tools.extendToScreenHeight('.intro-video-wrapper, .start', -45);
-		WISP.tools.extendToScreenHeight('.intro-video', 140);
+		initStartSection();
 		initMembers();
 		initWow();
 		initMainMenu();
@@ -77,10 +99,11 @@ WISP.initPlugins = (function () {
 	}
 
 	function initMainMenu() {
-		if (matchMedia(Foundation.media_queries['small-only','medium-only']).matches){
+		if (matchMedia(Foundation.media_queries['small-only']).matches){
 			$('#topbar').scrollupbar();
 		};
 
+		console.log(matchMedia(Foundation.media_queries['small-only']).matches);
 		$('#topbar').onePageNav({
 			currentClass: 'active',
 			changeHash: true,
@@ -132,6 +155,19 @@ WISP.initPlugins = (function () {
 		});
 	}
 
+	function initStartSection() {
+		if (matchMedia(Foundation.media_queries['large']).matches || matchMedia(Foundation.media_queries['medium']).matches){
+			WISP.tools.extendToScreenHeight('.intro-video-wrapper, .start', -45);
+			WISP.tools.extendToScreenHeight('.intro-video', 140);
+			$('body').css('opacity','1');
+		}
+		else {
+			$('.start iframe').remove();
+			$('body').css('opacity','1');
+			WISP.tools.extendToScreenHeight('.start', -45);
+		}
+
+	}
 	// expose public functions
 	return {
 		initialize: initialize,
@@ -144,16 +180,3 @@ if (typeof WISP.Bootstrap !== 'undefined') {
 	WISP.Bootstrap.registerBootstrap(WISP.initPlugins);
 }
 
-$(document).foundation({
-	accordion: {
-		callback : function (accordion) {
-			console.log(accordion.prev('a'));
-			WISP.tools.scrollToAnchor(accordion.prev('a'));
-		}
-	},
-	tab: {
-		callback : function (tab) {
-			WISP.initPlugins.renderMemberFlipcard($(tab).find('a').attr('href'));
-		}
-	}
-});
