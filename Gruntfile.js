@@ -180,7 +180,8 @@ module.exports = function(grunt) {
 					// includes files within path and its sub-directories
 					{expand: true,flatten:false, cwd:'<%= config.app %>', src: ['fonts/**'], dest: '<%= config.dist %>/'},
 					{expand: true, flatten:false, cwd:'<%= config.app %>', src: ['img/**'], dest: '<%= config.dist %>/'},
-					{expand: true, flatten:false, cwd:'<%= config.app %>', src: ['backend/**'], dest: '<%= config.dist %>/'}
+					{expand: true, flatten:false, cwd:'<%= config.app %>', src: ['backend/**'], dest: '<%= config.dist %>/'},
+					{expand: true, flatten:false, cwd:'<%= config.app %>', src: ['*.*'], dest: '<%= config.dist %>/'}
 				]
 			},
 			imageCfg: {

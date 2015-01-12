@@ -1,0 +1,4 @@
+AuthName "trulla"
+AuthType Basic
+AuthUserFile /home/strato/http/power/rid/96/63/53969663/htdocs/dist/.htpasswd
+require valid-user
