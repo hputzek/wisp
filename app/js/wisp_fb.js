@@ -16,7 +16,8 @@ WISP.fb = (function () {
 
 	var fbSettings = {
 		destination: $('.fb'),
-		templateEventsUpcoming: WISP.Templates["fb/events_upcoming"],
+		templateSingleView: WISP.Templates["fb/view/default"],
+		templateListUpcoming: WISP.Templates["fb/list/events_upcoming"],
 		apiKey : '1535892796689202%7C9BphNqgar5Rlz5WcdTVVL1lFssQ',
 		pageId: 'wispcrew',
 		maxResults: '5'
@@ -32,9 +33,9 @@ WISP.fb = (function () {
 		if(fbSettings.destination.length){
 			$.get(dataSourceUrlEventsUpcoming,function(data,status,xhr){
 				console.log(dataSourceUrlEventsUpcoming);
-				data.data['fbSettings'] = $.makeArray(fbSettings)[0];
+				data['fbSettings'] = $.makeArray(fbSettings)[0];
 				console.log(data);
-				var html = fbSettings.templateEventsUpcoming(data);
+				var html = fbSettings.templateListUpcoming(data);
 				// Render the posts into the page
 				fbSettings.destination.append(html);
 				$(document).foundation();
