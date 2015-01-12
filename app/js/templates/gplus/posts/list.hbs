@@ -2,8 +2,11 @@
 	{{#each items}}
 		<dd class="accordion-navigation">
 			<a href="#panel-{{@index}}" class="js-no-anchor-scroll">
-			{{{trimS this.object.attachments.0.displayName 0 80}}}
-			{{{trimS this.object.content 0 80}}}
+				{{#if this.object.content}}
+				{{{trimS this.object.content 0 80}}}
+				{{else}}
+				{{{trimS this.object.attachments.0.displayName 0 80}}}
+				{{/if}}
 			</a>
 			<div id="panel-{{@index}}" class="content">
 				<div class="row">
