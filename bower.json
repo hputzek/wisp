@@ -5,7 +5,6 @@
   "devDependencies": {
     "foundation": "5.5.0",
     "handlebars": "~2.0.0",
-    "freewall": "~1.0.5",
     "wow": "~1.0.2",
     "scroll-up-bar": "~0.3.0",
     "jQuery-One-Page-Nav": "~3.0.0"
