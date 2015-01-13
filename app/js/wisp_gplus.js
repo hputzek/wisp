@@ -15,7 +15,7 @@ WISP.gPlus = (function () {
 	'use strict';
 
 	var gplusSettings = {
-		destination: $('.gpluss'),
+		destination: $('.gplus'),
 		template: WISP.Templates["gplus/posts/list"],
 		apiKey : 'AIzaSyCPRAue-Xdpq-yBGU0P15E4exRh11PCABc',
 		//userId : '114550729912503618750',

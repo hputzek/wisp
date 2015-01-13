@@ -1,9 +1,9 @@
+
 <div class="fb-upcoming">
 	<ul class="accordion custom-accordion" data-accordion>
-	{{#each data}}
-
+	{{#each this}}
 			<li class="accordion-navigation">
-				<a href="#acc-{{this.id}}" data-index="{{this.index}}">{{this.name}}</a>
+				<a href="#acc-{{this.id}}" data-event-index="{{@index}}" data-event-type="upcoming">{{this.name}}</a>
 				<div id="acc-{{this.id}}" class="content">
 				</div>
 			</li>

@@ -51,9 +51,33 @@ $accordion-header-colors-length: length($accordion-header-colors);
 	.custom-accordion {
 		.accordion-navigation {
 			>a {
-				display: inline-block;
-				padding: rem-calc(5) rem-calc(10);
+			  position: relative;
+			  display: inline-block;
+			  padding: rem-calc(5) rem-calc(10);
+			  background-color: #fff;
 			}
+		  &.active {
+			>a {
+			  &:after {
+				-webkit-font-smoothing: antialiased;
+				font-size:rem-calc(30);
+				-moz-osx-font-smoothing: grayscale;
+				font-family: 'icomoon';
+				speak: none;
+				font-style: normal;
+				font-weight: normal;
+				font-variant: normal;
+				text-transform: none;
+				line-height: 1;
+				position: absolute;
+				display: block;
+				right: rem-calc(20);
+				top: calc(50% - 15px);
+				@extend .icon-cross:before;
+				cursor: pointer;
+			  }
+			}
+		  }
 		}
 	}
 }

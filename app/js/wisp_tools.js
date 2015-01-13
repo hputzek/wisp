@@ -23,23 +23,26 @@ WISP.tools = (function () {
 
 	}
 
-	function scrollToAnchor(hash,duration) {
+	function scrollToAnchor(hash,duration){
 		var animationDuration = 500;
 		if(duration > 0) {
 			animationDuration = duration;
 		}
 		$('html,body').animate({scrollTop:$($(hash)).offset().top + -45 + 'px'}, animationDuration);
-		if(hash.charAt(0) == '#') {
-			window.location.hash = hash;
+		if(hash !== undefined){
+			if(hash.charAt(0) == '#') {
+				window.location.hash = hash;
+			}
 		}
 	}
+
 
 	function extendToScreenHeight(elementSelector, nudge){
 		var _nudge = '0';
 		if(nudge != undefined){
-			_nudge = nudge
+			_nudge = nudge;
 		}
-		$(elementSelector).css('min-height', $(window).height() + nudge + 'px');
+		$(elementSelector).css('min-height', $(window).height() + _nudge + 'px');
 	}
 
 	// expose public functions
