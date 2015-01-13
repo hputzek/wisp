@@ -255,8 +255,8 @@ $body-bg: #222;
 // We use these to style anchors
 // $anchor-text-decoration: none;
 // $anchor-text-decoration-hover: none;
-// $anchor-font-color: $primary-color;
-// $anchor-font-color-hover: scale-color($primary-color, $lightness: -14%);
+ $anchor-font-color: darken($body-font-color,20);
+ $anchor-font-color-hover: $white;
 
 // We use these to style the <hr> element
 // $hr-border-width: 1px;
