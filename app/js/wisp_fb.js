@@ -27,8 +27,8 @@ WISP.fb = (function () {
 	var events = {};
 
 	// this can be edited easily by using the editor: https://developers.google.com/apis-explorer/#p/plus/v1/plus.activities.list
-	var dataSourceUrlEventsUpcoming = "https://graph.facebook.com/" + fbSettings.pageId + "/events?fields=cover,description,location,name,start_time,ticket_uri&since=947684981&access_token=" + fbSettings.apiKey;
-	var dataSourceUrlEventsPast = "https://graph.facebook.com/" + fbSettings.pageId + "/events?fields=cover,description,location,name,start_time,ticket_uri&since=947684981&access_token=" + fbSettings.apiKey;
+	var dataSourceUrlEventsUpcoming = "https://graph.facebook.com/" + fbSettings.pageId + "/events?fields=cover,description,location,name,start_time,ticket_uri&since="+ Math.floor(Date.now() / 1000) + "&access_token=" + fbSettings.apiKey;
+	var dataSourceUrlEventsPast = "https://graph.facebook.com/" + fbSettings.pageId + "/events?fields=cover,description,location,name,start_time,ticket_uri&since=947684981&until=" + Math.floor(Date.now() / 1000) + "&access_token=" + fbSettings.apiKey;
 	/**
 	 * initialize method
 	 */
@@ -84,4 +84,3 @@ WISP.fb = (function () {
 if (typeof WISP.Bootstrap !== 'undefined') {
 	WISP.Bootstrap.registerBootstrap(WISP.fb);
 }
-

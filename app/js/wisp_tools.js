@@ -29,11 +29,9 @@ WISP.tools = (function () {
 			animationDuration = duration;
 		}
 		$('html,body').animate({scrollTop:$($(hash)).offset().top + -45 + 'px'}, animationDuration);
-		if(hash !== undefined){
-			if(hash.charAt(0) == '#') {
-				window.location.hash = hash;
-			}
-		}
+
+		if(hash.charAt(0) == '#') {window.location.hash = hash};
+
 	}
 
 
