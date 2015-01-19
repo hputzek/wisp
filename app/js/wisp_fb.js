@@ -53,23 +53,25 @@ WISP.fb = (function () {
 
 	function loadPastEvents(){
 		if(fbSettings.destination.length){
-			$('#trigger-fb-past').one('click',function(){
+			$('#trigger-fb-past').one('click',function(e){
 				$.get(dataSourceUrlEventsPast,function(data,status,xhr){
 					events['past'] = data.data;
 					var html = fbSettings.templateListPast(events.past);
 					// Render the posts into the page
-					fbSettings.destination.find('#fb-past').append(html);
-					$(document).foundation();
+					fbSettings.destination.find('#fb-past').html(html);
+					loadEventsHandler();
 				});
 			});
+			$(document).foundation();
 		}
 	}
 
 	function loadEventsHandler(){
 		fbSettings.destination.find('[data-event-index]').each(function(i, e){
 			$(e).one('click', function(){
+				console.log('click');
 				var html = fbSettings.templateSingleView(events[$(e).data('event-type')][$(e).data('event-index')]);
-				$(this).next('.content').append(html);
+				$(this).next('.content').html(html);
 			});
 		});
 	}

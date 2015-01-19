@@ -187,7 +187,7 @@ $(window).on('hashchange', function(e) {
 	console.log(e);
 	setTimeout(function(){
 		$('html,body').animate({scrollTop:$($(window.location.hash)).offset().top + -45 + 'px'}, 300);
-	},1);
+	},5);
 
 
 });
