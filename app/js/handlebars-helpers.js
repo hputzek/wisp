@@ -30,6 +30,24 @@ Handlebars.registerHelper('trimS', function(passedString, start, length ){
 	}
 });
 
+Handlebars.registerHelper('getFirstLine', function(passedString){
+	if(passedString != undefined){
+		var theString = passedString.split('<br />');
+		theString = theString[0];
+		return new Handlebars.SafeString(theString);
+	}
+});
+
+Handlebars.registerHelper('removeFirstLine', function(passedString){
+	if(passedString != undefined){
+		var theString = passedString.slice(passedString.indexOf('<br />'));
+		return theString;
+	}
+});
+
+
+
+
 // http://doginthehat.com.au/2012/02/comparison-block-helper-for-handlebars-templates/
 
 Handlebars.registerHelper('compare', function(lvalue, rvalue, options) {

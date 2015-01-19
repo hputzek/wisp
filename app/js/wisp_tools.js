@@ -29,7 +29,7 @@ WISP.tools = (function () {
 			animationDuration = duration;
 		}
 		$('html,body').animate({scrollTop:$($(hash)).offset().top + -45 + 'px'}, animationDuration);
-		if(hash){
+		if(hash.length > 1){
 			if(hash.charAt(0) == '#') {window.location.hash = hash};
 		}
 	}

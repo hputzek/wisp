@@ -1,0 +1,12 @@
+.tabs {
+	a {
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+	.active {
+		a {
+			text-decoration: underline;
+		}
+	}
+}

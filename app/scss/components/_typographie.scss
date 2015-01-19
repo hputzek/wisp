@@ -12,17 +12,20 @@ a {
   transition: background-color 0.2s;
 }
 
-@while $color-variation-length > 0 {
-  a:nth-child(#{$color-variation-length}){
-    &:hover {
-      background-color: nth($color-variation,$color-variation-length);
+p {
+  @while $color-variation-length > 0 {
+    a:nth-of-type(#{$color-variation-length}){
+      &:hover {
+        background-color: nth($color-variation,$color-variation-length);
+      }
+      &:active {
+        background-color: nth($color-variation,$color-variation-length);
+      }
     }
-    &:active {
-      background-color: nth($color-variation,$color-variation-length);
-    }
+    $color-variation-length: $color-variation-length - 1;
   }
-  $color-variation-length: $color-variation-length - 1;
 }
+
 
 p{
   background-color: #fff;

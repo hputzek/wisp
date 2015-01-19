@@ -3,16 +3,16 @@
 		<dd class="accordion-navigation">
 			<a href="#panel-{{@index}}" class="js-no-anchor-scroll">
 				{{#if this.object.content}}
-				{{{trimS this.object.content 0 80}}}
+				{{getFirstLine this.object.content}}
 				{{else}}
-				{{{trimS this.object.attachments.0.displayName 0 80}}}
+				{{getFirstLine this.object.attachments.0.displayName}}
 				{{/if}}
 			</a>
 			<div id="panel-{{@index}}" class="content">
 				<div class="row">
 					<div class="small-12 columns">
 						<div class="gplus-news-body clearfix">
-							<p class="gplus-news-object-content">{{{this.object.content}}}</p>
+							<p class="gplus-news-object-content">{{{removeFirstLine this.object.content}}}</p>
 
 							{{#if object.attachments}} {{! if object has attachments }}
 								{{#each object.attachments}}
@@ -21,7 +21,7 @@
 										</h5>
 										<iframe src="{{this.embed.url}}"></iframe>
 										<div class="panel white" data-js-link-url="{{this.url}}">
-											<p>{{{this.content}}}</p>
+											<p>{{{removeFirstLine this.content}}}</p>
 										</div>
 									{{/compare}}
 									{{#compare this.objectType "article"}} {{! if attachment is an article/link }}
@@ -31,7 +31,7 @@
 											</a>
 											<h5>{{this.displayName}}</h5>
 
-											<p>{{this.content}}</p>
+												<p>{{removeFirstLine this.content}}</p>
 										</div>
 									{{/compare}}
 									{{#compare this.objectType "photo"}} {{! if attachment is a photo }}
@@ -45,7 +45,7 @@
 										<div class="panel tertiary-150" data-js-link-url="{{this.url}}">
 											<h5><i class="fa fa-calendar-o"></i> {{this.displayName}}</h5>
 
-											<p>{{this.content}}</p>
+											{{{removeFirstLine this.content}}}
 										</div>
 									{{/compare}}
 									{{#compare this.objectType "note"}} {{! if attachment is a note }}
@@ -55,7 +55,7 @@
 											</a>
 											<h5>{{this.displayName}}</h5>
 
-											<p>{{this.content}}</p>
+											{{{removeFirstLine this.content}}}
 										</div>
 									{{/compare}}
 								{{/each}}
