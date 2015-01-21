@@ -1,0 +1,11 @@
+<div class="fb-recommended small-12 columns">
+    <ul class="accordion custom-accordion" data-accordion="events-accordion">
+        {{#each this}}
+            <li class="accordion-navigation">
+                <a href="#acc-{{this.id}}" data-event-index="{{@index}}" data-event-type="recommended">{{this.name}}</a>
+                <div id="acc-{{this.id}}" class="content">
+                </div>
+            </li>
+        {{/each}}
+    </ul>
+</div>

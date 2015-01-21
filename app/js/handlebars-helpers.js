@@ -90,7 +90,6 @@ Handlebars.registerHelper('formatDate',function(input, pattern){
 		var parts = asIso.match(iso);
 		return pattern.format(parts, {yyyy:1,MM:4,dd:5,hh:6,mm:7,ss:8,SSS:9});
 	}
-	console.log('error');
 	return this[input];
 });
 

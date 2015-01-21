@@ -82,7 +82,6 @@ WISP.wispcast = (function () {
 			// Render the grid into the page
 			config.$trackGridElement.append(html(templateData));
 			$(document).foundation();
-			console.log(templateData);
 			$('body').on('click','[data-wispcast-tracknumber]',function(){
 				var tracknumber= $(this).data('wispcast-tracknumber');
 				var templateDataTrackinfo = templateData.wispcastSettings.trackData[tracknumber];

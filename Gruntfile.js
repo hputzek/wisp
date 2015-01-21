@@ -129,7 +129,7 @@ module.exports = function(grunt) {
 				options: {
 					port: 9001,
 					protocol: 'http',
-					hostname: '0.0.0.0',
+					hostname: '192.168.178.20',
 					base: ['<%= config.dist %>', '.'],  // '.' operates from the root of your Gruntfile, otherwise -> 'Users/user-name/www-directory/website-directory'
 					keepalive: false, // set to false to work side by side w/watch task.
 					livereload: true,
@@ -181,7 +181,11 @@ module.exports = function(grunt) {
 					{expand: true,flatten:false, cwd:'<%= config.app %>', src: ['fonts/**'], dest: '<%= config.dist %>/'},
 					{expand: true, flatten:false, cwd:'<%= config.app %>', src: ['img/**'], dest: '<%= config.dist %>/'},
 					{expand: true, flatten:false, cwd:'<%= config.app %>', src: ['backend/**'], dest: '<%= config.dist %>/'},
-					{expand: true, flatten:false, cwd:'<%= config.app %>', src: ['*.*'], dest: '<%= config.dist %>/'}
+					{expand: true, flatten:false, cwd:'<%= config.app %>', src: ['*.*'], dest: '<%= config.dist %>/'},
+					{
+						src:  '<%= config.app %>/templates/data/events_recommended.json',
+						dest: '<%= config.dist %>/data/events_recommended.json'
+					}
 				]
 			},
 			imageCfg: {

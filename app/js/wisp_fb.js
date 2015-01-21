@@ -16,10 +16,13 @@ WISP.fb = (function () {
 
 	var fbSettings = {
 		destination: $('.fb'),
+		apiUrl : 'https://graph.facebook.com/',
 		templateSingleView: WISP.Templates["fb/view/default"],
 		templateListUpcoming: WISP.Templates["fb/list/events_upcoming"],
 		templateListPast: WISP.Templates["fb/list/events_past"],
+		templateListRecommended: WISP.Templates["fb/list/events_recommended"],
 		apiKey : '1535892796689202%7C9BphNqgar5Rlz5WcdTVVL1lFssQ',
+		fields :'fields=cover,description,location,name,start_time,ticket_uri',
 		pageId: 'wispcrew',
 		maxResults: '5'
 	};
@@ -27,14 +30,15 @@ WISP.fb = (function () {
 	var events = {};
 
 	// this can be edited easily by using the editor: https://developers.google.com/apis-explorer/#p/plus/v1/plus.activities.list
-	var dataSourceUrlEventsUpcoming = "https://graph.facebook.com/" + fbSettings.pageId + "/events?fields=cover,description,location,name,start_time,ticket_uri&since="+ Math.floor(Date.now() / 1000) + "&access_token=" + fbSettings.apiKey;
-	var dataSourceUrlEventsPast = "https://graph.facebook.com/" + fbSettings.pageId + "/events?fields=cover,description,location,name,start_time,ticket_uri&since=947684981&until=" + Math.floor(Date.now() / 1000) + "&access_token=" + fbSettings.apiKey;
+	var dataSourceUrlEventsUpcoming = fbSettings.apiUrl + fbSettings.pageId + '/events?' + fbSettings.fields + "&since="+ Math.floor(Date.now() / 1000) + "&access_token=" + fbSettings.apiKey;
+	var dataSourceUrlEventsPast = fbSettings.apiUrl + fbSettings.pageId + '/events?' + fbSettings.fields + "&since=947684981&until=" + Math.floor(Date.now() / 1000) + "&access_token=" + fbSettings.apiKey;
 	/**
 	 * initialize method
 	 */
 	function initialize() {
 		initLoad();
 		loadPastEvents();
+		loadRecommendedEvents();
 	}
 
 	function initLoad(){
@@ -69,11 +73,37 @@ WISP.fb = (function () {
 	function loadEventsHandler(){
 		fbSettings.destination.find('[data-event-index]').each(function(i, e){
 			$(e).one('click', function(){
-				console.log('click');
 				var html = fbSettings.templateSingleView(events[$(e).data('event-type')][$(e).data('event-index')]);
 				$(this).next('.content').html(html);
 			});
 		});
+	}
+
+	function loadRecommendedEvents(){
+		if(fbSettings.destination.length){
+			$('#trigger-fb-recommended').one('click',function(e){
+				var eventListUrl = '';
+				$.getJSON( "data/events_recommended.json", function( data ) {
+					var items = [];
+					$.each(data.events, function (key, val) {
+						items.push(val.id);
+					});
+					eventListUrl = fbSettings.apiUrl + '?ids=' + items.join(",") + '&' + fbSettings.fields + "&access_token=" + fbSettings.apiKey + '&max_results=' + fbSettings.maxResults;
+					$.get(eventListUrl,function(data,status,xhr){
+						events.recommended = [];
+						$.each(data, function (key, val) {
+							events['recommended'].push(val);
+						});
+						var html = fbSettings.templateListRecommended(events.recommended);
+						// Render the posts into the page
+						fbSettings.destination.find('#fb-recommended').html(html);
+						loadEventsHandler();
+					});
+				});
+
+			});
+			$(document).foundation();
+		}
 	}
 
 	// expose public functions

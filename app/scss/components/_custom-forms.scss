@@ -1,5 +1,19 @@
 textarea {
 	box-shadow: inset 2px -2px 0 rgba(0, 0, 0, 0.5);
+  	max-width: rem-calc(600);
+  	margin-top: rem-calc(10);
+}
+
+input[type="text"],input[type="email"] {
+  max-width: rem-calc(600);
+  padding: 0 0 5px 3px;
+  font-size: rem-calc(20);
+  background: transparent;
+  position: relative;
+  transform: translateY(-34px);
+  &:focus, &:valid {
+  transform: translateY(0);
+  }
 }
 
 [data-abide] .error small.error, [data-abide] .error span.error, [data-abide] span.error, [data-abide] small.error {

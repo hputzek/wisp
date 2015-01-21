@@ -88,7 +88,6 @@ WISP.initPlugins = (function () {
 			$('#topbar').scrollupbar();
 		};
 
-		console.log(matchMedia(Foundation.media_queries['small-only']).matches);
 		$('#topbar').onePageNav({
 			currentClass: 'active',
 			changeHash: true,
@@ -171,7 +170,6 @@ if (typeof WISP.Bootstrap !== 'undefined') {
 $(document).foundation({
 	accordion: {
 		callback : function (accordion) {
-			console.log(accordion.prev('a'));
 			WISP.tools.scrollToAnchor(accordion.prev('a'));
 		}
 	},
@@ -184,7 +182,6 @@ $(document).foundation({
 
 
 $(window).on('hashchange', function(e) {
-	console.log(e);
 	setTimeout(function(){
 		$('html,body').animate({scrollTop:$($(window.location.hash)).offset().top + -45 + 'px'}, 300);
 	},5);

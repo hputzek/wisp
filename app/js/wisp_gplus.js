@@ -31,9 +31,7 @@ WISP.gPlus = (function () {
 	function initialize() {
 		if(gplusSettings.destination.length){
 			$.get(dataSourceUrl,function(data,status,xhr){
-				console.log(dataSourceUrl);
 				data.items['gplusSettings'] = $.makeArray(gplusSettings)[0];
-					console.log(data);
 					var html = gplusSettings.template(data);
 					// Render the posts into the page
 					gplusSettings.destination.append(html);
