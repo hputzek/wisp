@@ -58,7 +58,7 @@
 								</section>
 							</div>
 						</div>
-						<div class="back panel">
+						<div class="back panel-white">
 							<span class="clearfix"><button class="button secondary right tiny" data-trigger-flip=""><i class="icon-cross"></i></button></span>
                             <form class="contact-form" data-abide="ajax" action="{{mailformAdress}}" method="post">
                                 <input type="hidden" name="id" value="{{id}}"/>
@@ -76,9 +76,10 @@
 									<small class="error">An email address is required.</small>
 								</div>
 								<div class="message-field">
-									<label>Textarea Label
-										<textarea name="message" rows="10" placeholder="Your message to {{firstName}}"></textarea>
+									<label>Message <small>required</small>
+										<textarea name="message" rows="10" required placeholder="Your message to {{firstName}}"></textarea>
 									</label>
+									<small class="error">Please enter a message</small>
 								</div>
 								<button type="submit">Submit</button>
 							</form>

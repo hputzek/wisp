@@ -118,9 +118,9 @@ $font-family-sans-serif: $lato;
 // We use these as default colors throughout
  $primary-color: #222;
  $secondary-color: #e7e7e7;
-// $alert-color: #f04124;
+ $alert-color: #f04124;
 // $success-color: #43AC6A;
-// $warning-color: #f08a24;
+ $warning-color: #f08a24;
 // $info-color: #a0d3e8;
 
 // We use these to control various global styles
@@ -629,12 +629,12 @@ $body-bg: #222;
 // $input-focus-bg-color: scale-color($white, $lightness: -2%);
 // $input-border-color: scale-color($white, $lightness: -20%);
 // $input-focus-border-color: scale-color($white, $lightness: -40%);
-// $input-border-style: solid;
+ $input-border-style: none;
 // $input-border-width: 1px;
 // $input-border-radius: $global-radius;
 // $input-disabled-bg: $gainsboro;
 // $input-disabled-cursor: $cursor-default-value;
-// $input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+ $input-box-shadow: inset 0 -2px 0 rgba(0,0,0,0.5);
 
 // We use these to style the fieldset border and spacing.
 // $fieldset-border-style: solid;
@@ -661,16 +661,16 @@ $body-bg: #222;
 // $input-number-spinners: true;
 
 // We use these to style the error states for inputs and labels
-// $input-error-message-padding: rem-calc(6 9 9);
-// $input-error-message-top: -1px;
+ $input-error-message-padding: rem-calc(3 0);
+ $input-error-message-top: -1px;
 // $input-error-message-font-size: rem-calc(12);
 // $input-error-message-font-weight: $font-weight-normal;
 // $input-error-message-font-style: italic;
-// $input-error-message-font-color: $white;
+ $input-error-message-font-color: $alert-color;
 // $input-error-message-font-color-alt: $oil;
 
 // We use this to style the glowing effect of inputs when focused
-// $input-include-glowing-effect: true;
+ $input-include-glowing-effect: false;
 // $glowing-effect-fade-time: 0.45s;
 // $glowing-effect-color: $input-focus-border-color;
 

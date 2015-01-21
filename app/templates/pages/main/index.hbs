@@ -97,11 +97,14 @@ pagetitle: Startseite
                     <small class="error">An email address is required.</small>
                 </div>
                 <div class="message-field">
-                    <label>Textarea Label
-                        <textarea rows="10" name="message" placeholder="Your message to us"></textarea>
-                    </label>
+					<label>Message <small>required</small>
+						<textarea name="message" rows="10" required placeholder="Your message to us"></textarea>
+					</label>
+					<small class="error">Please enter a message</small>
                 </div>
-                <button type="submit">Submit</button>
+                <div class="text-right">
+					<button type="submit">Submit</button>
+                </div>
             </form>
 		</div>
 	</div>

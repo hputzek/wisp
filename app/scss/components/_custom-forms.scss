@@ -1,0 +1,7 @@
+textarea {
+	box-shadow: inset 2px -2px 0 rgba(0, 0, 0, 0.5);
+}
+
+[data-abide] .error small.error, [data-abide] .error span.error, [data-abide] span.error, [data-abide] small.error {
+	background: none;
+}
