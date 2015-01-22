@@ -12,6 +12,7 @@ if (typeof WISP === 'undefined') {
 }
 
 var wow;
+var loadingObjects = [];
 
 WISP.tools = (function () {
 	'use strict';
@@ -43,11 +44,35 @@ WISP.tools = (function () {
 		$(elementSelector).css('min-height', $(window).height() + _nudge + 'px');
 	}
 
+	function allLoadingDone() {
+		$( document ).trigger( "siteReady");
+		$('body').css('opacity',1);
+		console.log('ready');
+	}
+
+	function registerLoader(item){
+		loadingObjects[item] = item;
+	}
+
+	function setLoadingItemDone(item) {
+		if(loadingObjects[item]){
+			delete loadingObjects[item];
+		}
+		setTimeout(function(){
+			if (loadingObjects.length === 0){
+				allLoadingDone();
+			}
+		}, 1000);
+	}
+
 	// expose public functions
 	return {
 		initialize: initialize,
 		scrollToAnchor: scrollToAnchor,
-		extendToScreenHeight: extendToScreenHeight
+		extendToScreenHeight: extendToScreenHeight,
+		registerLoader: registerLoader,
+		loadingItemDone: setLoadingItemDone
+
 	};
 }) ();
 

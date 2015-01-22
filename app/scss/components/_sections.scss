@@ -14,9 +14,8 @@ html {
 }
 
 .js body {
-  //TODO: make solve js issue with that
-  //opacity: 0;
-  transition: opacity 1s;
+  opacity: 0;
+  transition: opacity 2s;
 }
 
 @media #{$medium-up} {

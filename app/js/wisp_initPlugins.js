@@ -8,39 +8,11 @@
  */
 
 
-
-;(function($) {
-
-	var $f = $('iframe'),
-		url = $f.attr('src').split('?')[0];
-
-	if ( window.addEventListener )
-		window.addEventListener('message', onMessageReceived, false);
-	else
-		window.attachEvent('onmessage', onMessageReceived, false);
-
-	function onMessageReceived(e) {
-
-		var data = JSON.parse(e.data);
-
-		switch (data.event) {
-			case 'ready':
-				$('body').css('opacity','1');
-				var data = { method: 'setVolume', value: '0' };
-				$f[0].contentWindow.postMessage(JSON.stringify(data), url);
-				data = {method: 'seekTo', value: 15.9};
-				$f[0].contentWindow.postMessage(JSON.stringify(data), url);
-				data = { method: 'play' };
-				$f[0].contentWindow.postMessage(JSON.stringify(data), url);
-				break;
-		}
-
-	}
-})(jQuery);
-
 // Register custom media query
 Foundation.utils.register_media('small-only', 'custom-mq-small-only');
 Foundation.utils.register_media('medium-only', 'custom-mq-medium-only');
+
+
 
 if (typeof WISP === 'undefined') {
 	WISP = jQuery.extend({},{});
@@ -142,16 +114,47 @@ WISP.initPlugins = (function () {
 		});
 	}
 
+	function addVideoControl() {
+
+		if ($('.intro-video-wrapper iframe').length > 0) {
+			WISP.tools.registerLoader('vimeo');
+			var $f = $('.intro-video-wrapper iframe'),
+				url = $f.attr('src').split('?')[0];
+
+			if (window.addEventListener)
+				window.addEventListener('message', onMessageReceived, false);
+			else
+				window.attachEvent('onmessage', onMessageReceived, false);
+		}
+	}
+
+	function onMessageReceived(e) {
+
+		var data = JSON.parse(e.data);
+
+		switch (data.event) {
+			case 'ready':
+				var data = {method: 'setVolume', value: '0'};
+				$f[0].contentWindow.postMessage(JSON.stringify(data), url);
+				data = {method: 'seekTo', value: 15.9};
+				$f[0].contentWindow.postMessage(JSON.stringify(data), url);
+				data = {method: 'play'};
+				$f[0].contentWindow.postMessage(JSON.stringify(data), url);
+				WISP.tools.loadingItemDone('vimeo');
+				break;
+		}
+	}
+
 	function initStartSection() {
 		if (matchMedia(Foundation.media_queries['large']).matches || matchMedia(Foundation.media_queries['medium']).matches){
+			$('.intro-video-wrapper').append('<iframe class="intro-video" src="https://player.vimeo.com/video/91148509?api=1&title=0&amp;byline=0&amp;portrait=0&amp;autoplay=1&amp;loop=1" width="100%" height="0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>');
+			addVideoControl();
 			WISP.tools.extendToScreenHeight('.intro-video-wrapper, .start', -45);
 			WISP.tools.extendToScreenHeight('.intro-video', 140);
-			$('body').css('opacity','1');
 		}
 		else {
-			$('.start iframe').remove();
-			$('body').css('opacity','1');
 			WISP.tools.extendToScreenHeight('.start', -45);
+
 		}
 
 	}

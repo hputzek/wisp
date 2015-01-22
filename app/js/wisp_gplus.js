@@ -30,12 +30,14 @@ WISP.gPlus = (function () {
 	 */
 	function initialize() {
 		if(gplusSettings.destination.length){
+			WISP.tools.registerLoader('soundcloud');
 			$.get(dataSourceUrl,function(data,status,xhr){
 				data.items['gplusSettings'] = $.makeArray(gplusSettings)[0];
 					var html = gplusSettings.template(data);
 					// Render the posts into the page
 					gplusSettings.destination.append(html);
 				$(document).foundation();
+				WISP.tools.loadingItemDone('soundcloud');
 			});
 		}
 	}
