@@ -28,6 +28,10 @@ WISP.initPlugins = (function () {
 	 * initialize method
 	 */
 	function initialize() {
+		$(document).on('siteReady',function(){
+			$('body').removeClass('loading');
+			console.log('ready');
+		});
 		initStartSection();
 		initMembers();
 		initWow();
@@ -130,7 +134,7 @@ WISP.initPlugins = (function () {
 
 	}
 
-	function onMessageReceived(e,$f) {
+	function onMessageReceived(e) {
 
 		var data = JSON.parse(e.data);
 
@@ -151,6 +155,7 @@ WISP.initPlugins = (function () {
 		if (matchMedia(Foundation.media_queries['large']).matches || matchMedia(Foundation.media_queries['medium']).matches){
 			$('.intro-video-wrapper').html('<iframe class="intro-video" src="https://player.vimeo.com/video/91148509?api=1&title=0&amp;byline=0&amp;portrait=0&amp;autoplay=1&amp;loop=1" width="100%" height="0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>');
 			addVideoControl();
+
 			WISP.tools.extendToScreenHeight('.intro-video-wrapper, .start', -45);
 			WISP.tools.extendToScreenHeight('.intro-video', 140);
 		}

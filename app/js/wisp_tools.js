@@ -12,7 +12,7 @@ if (typeof WISP === 'undefined') {
 }
 
 var wow;
-var loadingObjects = [];
+var loadingObjects = {};
 
 WISP.tools = (function () {
 	'use strict';
@@ -44,10 +44,16 @@ WISP.tools = (function () {
 		$(elementSelector).css('min-height', $(window).height() + _nudge + 'px');
 	}
 
+	Object.size = function(obj) {
+		var size = 0, key;
+		for (key in obj) {
+			if (obj.hasOwnProperty(key)) size++;
+		}
+		return size;
+	};
+
 	function allLoadingDone() {
 		$( document ).trigger( "siteReady");
-		$('body').css('opacity',1);
-		console.log('ready');
 	}
 
 	function registerLoader(item){
@@ -58,11 +64,10 @@ WISP.tools = (function () {
 		if(loadingObjects[item]){
 			delete loadingObjects[item];
 		}
-		setTimeout(function(){
-			if (loadingObjects.length === 0){
-				allLoadingDone();
-			}
-		}, 1000);
+		if (Object.keys(loadingObjects).length === 0){
+
+			allLoadingDone();
+		}
 	}
 
 	// expose public functions

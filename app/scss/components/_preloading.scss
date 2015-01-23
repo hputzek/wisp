@@ -1,0 +1,50 @@
+@keyframes rotating {
+	from{
+		transform: rotate(0deg);
+	}
+	to{
+		transform: rotate(360deg);
+	}
+}
+
+.js .loading {
+	position: relative;
+	@extend .icon-spinner8;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	width: 100%;
+	height: 100%;
+	z-index: 200;
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	&:after {
+		content: " ";
+		display: block;
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		z-index: 200;
+		background: #000;
+		top: 0;
+		left: 0;
+		opacity: 1;
+		transition: opacity 2s;
+	}
+
+	&:before {
+		animation: rotating .5s linear infinite;
+		font-family: 'icomoon';
+		text-align :center;
+		background: transparent;
+		top: calc(50% - 150px);
+		left: 0;
+		z-index: 201;
+		width: 100%;
+		font-size: rem-calc(120);
+	}
+}
