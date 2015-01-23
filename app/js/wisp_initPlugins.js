@@ -29,7 +29,7 @@ WISP.initPlugins = (function () {
 	 */
 	function initialize() {
 		$(document).on('siteReady',function(){
-			$('body').removeClass('loading');
+			$('.loader').removeClass('loading');
 			console.log('ready');
 		});
 		initStartSection();
